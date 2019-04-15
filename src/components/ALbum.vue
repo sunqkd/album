@@ -90,17 +90,18 @@
         created() {
             this.splitHref(window.location.href);
             this.getShareUrl();
+            this.shareWxTitle();
+            this.shareSubTitle();
         },
         watch:{
             albumTitle(data){
                 this.shareWxTitle();
+                this.shareSubTitle();
             }
         },
         async mounted() {
             await this.getAlbumById();
             this.addlisten();
-            this.shareWxTitle();
-            this.shareSubTitle();
         },
         methods: {
 
@@ -238,7 +239,7 @@
                 this.axios.post(url).then((res)=>{
                     if(res.data.status == 1){
                         let strsub =  res.data.data.total + '个项目：' + res.data.data.projectNames.join(",")
-                         $(".shareDesc").text(strsub);
+                        $(".shareDesc").text(strsub);
                     }
                 })
             },
