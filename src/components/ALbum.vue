@@ -90,8 +90,7 @@
         created() {
             this.splitHref(window.location.href);
             this.getShareUrl();
-            this.shareWxTitle();
-            this.shareSubTitle();
+           
         },
         watch:{
             albumTitle(data){
@@ -102,6 +101,9 @@
         async mounted() {
             await this.getAlbumById();
             this.addlisten();
+            this.shareWxTitle();
+            await this.shareSubTitle();
+            this.share();
         },
         methods: {
 
@@ -234,9 +236,9 @@
                 let shareTitle = this.albumTitle
                 $(".shareTitle").text(shareTitle);
             },
-            shareSubTitle(){ // 分享副标题
+            async shareSubTitle(){ // 分享副标题
                 let url = '/vc/albumFlow/queryAlbumProjectsShare?albumId='+ this.query.albumId;
-                this.axios.post(url).then((res)=>{
+                await this.axios.post(url).then((res)=>{
                     if(res.data.status == 1){
                         let strsub =  res.data.data.total + '个项目：' + res.data.data.projectNames.join(",")
                         $(".shareDesc").text(strsub);
@@ -252,6 +254,41 @@
             clearCookie(name) { // 清除cookie
                this.setCookie(name, "", -1); 
             },
+            share(){
+                $.getScript('https://res.wx.qq.com/open/js/jweixin-1.0.0.js', function(){
+                    $.ajax({
+                        url: "https://m.dyly.com/weixin/getWxConfig",
+                        type: 'POST',
+                        data: {
+                            url: window.location.href
+                        }
+                    }).success(function(data){
+                        wx.config({
+                            appId: data.data.appId,
+                            timestamp: data.data.timestamp,
+                            nonceStr: data.data.nonceStr,
+                            signature: data.data.signature,
+                            jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+                        });
+                        // updateAppMessageShareData
+                        wx.ready(function(){
+                            // 鏈嬪弸鍦堝垎浜�
+                            wx.onMenuShareTimeline({
+                                title: "132",
+                                link: 'http://test1.dyly.com/album/index.html#/project?userId=cust1025830&token=&albumId=188',
+                                imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
+                            })
+                            // 鍒嗕韩缁欐湅鍙�
+                            wx.onMenuShareAppMessage({
+                                title: "132",
+                                desc: "456456",
+                                link: 'http://test1.dyly.com/album/index.html#/project?userId=cust1025830&token=&albumId=188',
+                                imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
+                            })
+                        })
+                    })
+                });
+            }
         },
         components:{
             "alertInfo":alertInfo
