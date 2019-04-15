@@ -274,14 +274,14 @@
                         wx.ready(function(){
                             // 鏈嬪弸鍦堝垎浜�
                             wx.onMenuShareTimeline({
-                                title: "132",
+                                title: $(".shareTitle").text(shareTitle),
                                 link: 'http://test1.dyly.com/album/index.html#/project?userId=cust1025830&token=&albumId=188',
                                 imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
                             })
                             // 鍒嗕韩缁欐湅鍙�
                             wx.onMenuShareAppMessage({
-                                title: "132",
-                                desc: "456456",
+                                title: $(".shareTitle").text(shareTitle),
+                                desc: $(".shareDesc").text(strsub),
                                 link: 'http://test1.dyly.com/album/index.html#/project?userId=cust1025830&token=&albumId=188',
                                 imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
                             })
