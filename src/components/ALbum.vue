@@ -275,7 +275,7 @@
                             // 鏈嬪弸鍦堝垎浜�
                             wx.onMenuShareTimeline({
                                 title: $(".shareTitle").text(),
-                                link: 'http://test1.dyly.com/album/index.html#/project?userId=cust1025830&token=&albumId=188',
+                                link: document.querySelector('meta[property="og:url"]').getAttribute('content'),
                                 imgUrl: 'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'
                             })
                             // 鍒嗕韩缁欐湅鍙�
