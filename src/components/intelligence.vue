@@ -18,9 +18,9 @@
                 </ul>
             </div>
         </div>
-        <div style="position:relative;width:100%;height:100%;">
+        <div style="position:relative;width:100%;height:100%;" >
             <scroller  :on-refresh="refresh" :on-infinite="infinite" refresh-layer-color="#4b8bf4"
-                loading-layer-color="#ec4949" :noDataText="noDataText">
+                loading-layer-color="#ec4949" :noDataText="noDataText" ref="my_scroller">
                 <!-- 上啦动画 -->
                 <svg class="spinner" style="stroke: #4b8bf4;" slot="refresh-spinner" viewBox="0 0 64 64">
                     <g stroke-width="7" stroke-linecap="round">
@@ -58,8 +58,8 @@
                         </line>
                     </g>
                 </svg>
-                <div class="intelligenceContent">
-                    <ul class="projectDataContain">
+                <div class="intelligenceContent" >
+                    <ul class="projectDataContain" id="asdasd">
                         <li v-for="(item,index) in intelligenceData" :key="index" style="" @click="goProDetail(item)">
                             <div class="projectLeft">
                                 <div class="projectImgContain">
@@ -190,6 +190,18 @@
             this.userId =  this.$route.query.userId // 用户ID
             await this.getAlbumLabel();
             this.getProjectByLabel();
+        },
+        mounted(){
+            this.timer = setInterval(() => {
+                let {left, top} = this.$refs.my_scroller.getPosition()
+                this.x = left
+                this.y = top
+                if(this.y > 100){
+                    window.scrollTo(0, 100);
+                }else{
+                    window.scrollTo(0, 0);
+                }
+            }, 50)
         },
         methods: {
             refresh(done){
@@ -326,6 +338,9 @@
                     }
                 })
             }
+        },
+        destroyed(){
+            clearInterval(this.timer)
         },
         components:{
             "projectAlbum":projectAlbum,
