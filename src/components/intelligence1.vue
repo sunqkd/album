@@ -311,7 +311,8 @@
                     "pageSize": this.query.pageSize,
                     "pageNum": this.query.pageNum,
                     "labels": this.selectLabel,
-                    "cities": this.selectCity
+                    "cities": this.selectCity,
+                    "flowId":this.flowId
                 }).then((res) => {
                     if (res.data.status == 1) {
                         this.nodata = true;
