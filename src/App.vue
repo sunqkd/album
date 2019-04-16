@@ -398,6 +398,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 /* 智能推荐 */
 .intelligenceContain{
     width:100%;
+    height:100%;
 }
 .intelligenceBanner{
     width:100%;
