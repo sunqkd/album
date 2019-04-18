@@ -1,6 +1,6 @@
 <template id="intelligence">
     <div class="intelligenceContain">
-        <div class="intelligenceBanner">
+        <div class="intelligenceBanner" id="intelligenceBanner">
             <div class="intelligenceLabel">
                 <ul class="LabelUL">
                     <li v-for="(item,index) in labels" :key="index" class="noActiveLabel"
@@ -18,7 +18,7 @@
                 </ul>
             </div>
         </div>
-        <div style="position:relative;width:100%;height:100%;" >
+        <div style="position:relative;width:100%;height:100%;" id="odiv" >
             <scroller  :on-refresh="refresh" :on-infinite="infinite" refresh-layer-color="#4b8bf4"
                 loading-layer-color="#ec4949" :noDataText="noDataText" ref="my_scroller">
                 <!-- 上啦动画 -->
@@ -226,16 +226,20 @@
             this.getProjectByLabel();
         },
         mounted(){
-            this.timer = setInterval(() => {
-                let {left, top} = this.$refs.my_scroller.getPosition()
-                this.x = left
-                this.y = top
-                if(this.y > 100){
-                    window.scrollTo(0, 100);
+            let that = this;
+            function fn(){
+                let {left, top} = that.$refs.my_scroller.getPosition()
+                that.x = left
+                that.y = top
+                if(that.y > 100){
+                    document.getElementById("titleContain").style.display = 'none'
+                    document.getElementById('intelligenceBanner').style.display = 'none';
                 }else{
-                    window.scrollTo(0, 0);
+                    document.getElementById("titleContain").style.display = 'block';
+                    document.getElementById('intelligenceBanner').style.display = 'block';
                 }
-            }, 50)
+            }
+            that.timer = setInterval(fn, 10)
         },
         methods: {
             refresh(done){

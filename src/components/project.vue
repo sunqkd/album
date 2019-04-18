@@ -1,7 +1,7 @@
 <template id="project">
     <div class="projectContain" style="height:100%;">
         <scroller  :on-refresh="refresh" :on-infinite="infinite" refresh-layer-color="#4b8bf4"
-            loading-layer-color="#ec4949" :noDataText="noDataText">
+            loading-layer-color="#ec4949" :noDataText="noDataText" ref="projectScroll">
              <!-- 上啦动画 -->
             <svg class="spinner" style="stroke: #4b8bf4;" slot="refresh-spinner" viewBox="0 0 64 64">
                 <g stroke-width="7" stroke-linecap="round">
@@ -242,6 +242,22 @@
                 this.login = 5;
             }
             this.getAlbumProjects();
+        },
+        mounted(){
+            let that = this;
+            function fn(){
+                let {left, top} = that.$refs.projectScroll.getPosition()
+                that.x = left
+                that.y = top
+                if(that.y > 100){
+                    document.getElementById("titleContain").style.display = 'none'
+                    document.getElementById('intelligenceBanner').style.display = 'none';
+                }else{
+                    document.getElementById("titleContain").style.display = 'block';
+                    document.getElementById('intelligenceBanner').style.display = 'block';
+                }
+            }
+            that.timer = setInterval(fn, 10)
         },
         methods:{
             refresh(done){

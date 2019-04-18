@@ -230,16 +230,20 @@
             this.getProjectByLabel();
         },
         mounted(){
-            this.timer = setInterval(() => {
-                let {left, top} = this.$refs.my_scrollers.getPosition()
-                this.x = left
-                this.y = top
-                if(this.y > 100){
-                    window.scrollTo(0, 100);
+            let that = this;
+            function fn(){
+                let {left, top} = that.$refs.my_scrollers.getPosition()
+                that.x = left
+                that.y = top
+                if(that.y > 100){
+                    document.getElementById("titleContain").style.display = 'none'
+                    document.getElementById('intelligenceBanner').style.display = 'none';
                 }else{
-                    window.scrollTo(0, 0);
+                    document.getElementById("titleContain").style.display = 'block';
+                    document.getElementById('intelligenceBanner').style.display = 'block';
                 }
-            }, 50)
+            }
+            that.timer = setInterval(fn, 10)
         },
         methods: {
             refresh(done){ // 下拉刷新
