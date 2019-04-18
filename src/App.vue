@@ -190,7 +190,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     display:inline-block;
     background:rgba(182,153,106,0.2);
     border-radius:4px;
-    padding:1px 6px;
+    padding:0px 6px;
     font-size:11px;
     color:rgba(182,153,106,1);
     font-weight:normal;

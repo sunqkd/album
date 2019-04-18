@@ -74,7 +74,7 @@
                             <div class="projectRight">
                                 <div class="projectOneLine">
                                     <div class="projectName">
-                                        {{item.name}}<span class="stockCode">{{item.stockCode}}</span>
+                                        {{item.name}}<span class="stockCode" v-if="item.stockCode">{{item.stockCode}}</span>
                                     </div>
                                     <div class="projectCityName">
                                         {{item.cityName}}
