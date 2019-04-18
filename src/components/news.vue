@@ -1,8 +1,8 @@
 <template id="news">
     <div class="newsContain">
         <scroller  :on-refresh="refresh" :on-infinite="infinite" refresh-layer-color="#4b8bf4"
-            loading-layer-color="#ec4949" ref="my_scroller" :noDataText="noDataText">
-             <!-- 上啦动画 -->
+            loading-layer-color="#ec4949" ref="my_scrollerNew" :noDataText="noDataText">
+            <!-- 上啦动画 -->
             <svg class="spinner" style="stroke: #4b8bf4;" slot="refresh-spinner" viewBox="0 0 64 64">
                 <g stroke-width="7" stroke-linecap="round">
                     <line x1="10" x2="10" y1="27.3836" y2="36.4931">
@@ -56,6 +56,9 @@
                     </div>
                 </li>
             </ul>
+            <div v-if="loading" style="display:flex;justify-content:center">
+                <img src="./img/loading.gif" alt="">
+            </div>
             <!-- 下拉动画 -->
             <svg class="spinner" style="stroke: #4b8bf4;" slot="infinite-spinner" viewBox="0 0 64 64">
                 <g stroke-width="7" stroke-linecap="round">
@@ -116,7 +119,8 @@
                 },
                 noDataFlag: false,
                 nodata:false, // 禁止下拉刷新
-                noDataText:''
+                noDataText:'',
+                loading:false,
             }
         },
         created() {
@@ -125,11 +129,43 @@
             this.userId = this.$route.query.userId // 用户ID
             this.getNews();
         },
+        mounted(){
+            let that = this;
+            function fn(){
+                let {left, top} = that.$refs.my_scrollerNew.getPosition()
+                that.x = left
+                that.y = top
+                if(that.y > 150){
+                    document.getElementById("titleContain").style.display = 'none'
+                }else{
+                    document.getElementById("titleContain").style.display = 'block';
+                }
+            }
+            that.timer = setInterval(fn, 10)
+        },
         methods: {
             refresh(done){ // 下拉刷新
                 this.query.pageNum = 1;
                 setTimeout(() => {
-                    this.getNews();
+                    this.axios.post('/vc/albumFlow/queryAlbumNews', {}, {
+                        params: {
+                            "pageSize": this.query.pageSize,
+                            "pageNum": this.query.pageNum,
+                            "albumId": this.albumId
+                        }
+                    }).then((res)=>{
+                        if(res.data.status == 1){
+                            this.nodata = true;
+                            this.newsList = res.data.data.list;
+                            if(res.data.data.list.length == 0){
+                                this.noDataFlag = true;
+                            }else{
+                                this.noDataFlag = false;
+                            }
+                        }else{
+
+                        }
+                    })
                     done();
                 }, 1500)
             },
@@ -173,6 +209,7 @@
                 }
             },
             getNews(){
+                this.loading = true;
                 this.axios.post('/vc/albumFlow/queryAlbumNews', {}, {
                     params: {
                         "pageSize": this.query.pageSize,
@@ -182,6 +219,7 @@
                 }).then((res)=>{
                     if(res.data.status == 1){
                         this.nodata = true;
+                        this.loading = false;
                         this.newsList = res.data.data.list;
                         if(res.data.data.list.length == 0){
                             this.noDataFlag = true;
@@ -194,5 +232,8 @@
                 })
             }
         },
+        destroyed(){
+            clearInterval(this.timer);
+        }
     }
 </script>

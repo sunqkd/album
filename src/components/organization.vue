@@ -1,8 +1,8 @@
 <template id="organization">
-    <div class="orgContain" style="height:100%">
+    <div class="orgContain">
         <scroller  :on-refresh="refresh" :on-infinite="infinite" refresh-layer-color="#4b8bf4"
             loading-layer-color="#ec4949" ref="my_scrolleror" :noDataText="noDataText">
-            <!-- 上啦动画 -->
+            
             <svg class="spinner" style="stroke: #4b8bf4;" slot="refresh-spinner" viewBox="0 0 64 64">
                 <g stroke-width="7" stroke-linecap="round">
                     <line x1="10" x2="10" y1="27.3836" y2="36.4931">
@@ -51,7 +51,9 @@
                     <div class="borderBg"></div>
                 </li>
             </ul>
-            <!-- 下拉动画 -->
+            <div v-if="loading" style="display:flex;justify-content:center">
+                <img src="./img/loading.gif" alt="">
+            </div>
             <svg class="spinner" style="stroke: #4b8bf4;" slot="infinite-spinner" viewBox="0 0 64 64">
                 <g stroke-width="7" stroke-linecap="round">
                     <line x1="10" x2="10" y1="27.3836" y2="36.4931">
@@ -89,16 +91,12 @@
                 </g>
             </svg>
         </scroller>
-        
         <div class="activeContain" v-if="noDataFlag">
             <img src="./img/nocollect.png" alt="" class="nocontent">
             <div class="nocontentText">
                 暂无数据
             </div>
         </div>
-        <!-- <div v-if="loading" style="display:flex;justify-content:center">
-            <img src="./img/loading.gif" alt="">
-        </div> -->
     </div>
 </template>
 <script>
@@ -124,6 +122,20 @@
             this.albumId = this.$route.query.albumId // 专辑ID
             this.userId =  this.$route.query.userId // 用户ID
             this.getAlbumCompany();
+        },
+        mounted(){
+            let that = this;
+            function fn(){
+                let {left, top} = that.$refs.my_scrolleror.getPosition()
+                that.x = left
+                that.y = top
+                if(that.y > 150){
+                    document.getElementById("titleContain").style.display = 'none'
+                }else{
+                    document.getElementById("titleContain").style.display = 'block';
+                }
+            }
+            that.timer = setInterval(fn, 10)
         },
         methods:{
             refresh(done){ // 下拉刷新
@@ -189,7 +201,7 @@
                 }).then((res)=>{
                     if(res.data.status == 1){
                         this.nodata = true;
-                        this.loading = true;
+                        this.loading = false;
                         this.orgData = res.data.data.list;
                         if(res.data.data.list.length == 0){
                             this.noDataFlag = true
@@ -210,5 +222,8 @@
                 }
             },
         },
+        destroyed(){
+            clearInterval(this.timer)
+        }
     }
 </script>
