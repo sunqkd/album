@@ -101,43 +101,8 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="loading" v-if="loading">
-                        <svg class="spinner" style="stroke: #4b8bf4;" slot="refresh-spinner" viewBox="0 0 64 64">
-                            <g stroke-width="7" stroke-linecap="round">
-                                <line x1="10" x2="10" y1="27.3836" y2="36.4931">
-                                    <animate attributeName="y1" dur="750ms" values="16;18;28;18;16;16" repeatCount="indefinite">
-                                    </animate>
-                                    <animate attributeName="y2" dur="750ms" values="48;46;36;44;48;48" repeatCount="indefinite">
-                                    </animate>
-                                    <animate attributeName="stroke-opacity" dur="750ms" values="1;.4;.5;.8;1;1"
-                                        repeatCount="indefinite"></animate>
-                                </line>
-                                <line x1="24" x2="24" y1="18.6164" y2="45.3836">
-                                    <animate attributeName="y1" dur="750ms" values="16;16;18;28;18;16" repeatCount="indefinite">
-                                    </animate>
-                                    <animate attributeName="y2" dur="750ms" values="48;48;46;36;44;48" repeatCount="indefinite">
-                                    </animate>
-                                    <animate attributeName="stroke-opacity" dur="750ms" values="1;1;.4;.5;.8;1"
-                                        repeatCount="indefinite"></animate>
-                                </line>
-                                <line x1="38" x2="38" y1="16.1233" y2="47.8767">
-                                    <animate attributeName="y1" dur="750ms" values="18;16;16;18;28;18" repeatCount="indefinite">
-                                    </animate>
-                                    <animate attributeName="y2" dur="750ms" values="44;48;48;46;36;44" repeatCount="indefinite">
-                                    </animate>
-                                    <animate attributeName="stroke-opacity" dur="750ms" values=".8;1;1;.4;.5;.8"
-                                        repeatCount="indefinite"></animate>
-                                </line>
-                                <line x1="52" x2="52" y1="16" y2="48">
-                                    <animate attributeName="y1" dur="750ms" values="28;18;16;16;18;28" repeatCount="indefinite">
-                                    </animate>
-                                    <animate attributeName="y2" dur="750ms" values="36;44;48;48;46;36" repeatCount="indefinite">
-                                    </animate>
-                                    <animate attributeName="stroke-opacity" dur="750ms" values=".5;.8;1;1;.4;.5"
-                                        repeatCount="indefinite"></animate>
-                                </line>
-                            </g>
-                        </svg>
+                    <div v-if="loading" style="display:flex;justify-content:center">
+                        <img src="./img/loading.gif" alt="">
                     </div>
                     <div class="activeContain" v-if="noDataFlag">
                         <img src="./img/nocollect.png" alt="" class="nocontent">
@@ -208,7 +173,6 @@
                     pageNum:1,
                     pageSize:10
                 },
-                flag:true,
                 noDataFlag:false,
                 addWorkFlowFlag:false, // 添加工作流
                 projectCodesData:'', // 项目ID
@@ -245,7 +209,25 @@
             refresh(done){
                 this.query.pageNum = 1;
                 setTimeout(() => {
-                    this.getProjectByLabel();
+                    this.axios.post('/vc/albumFlow/queryAlbumProjectByLabel',{
+                        "pageSize": this.query.pageSize,
+                        "pageNum": this.query.pageNum,
+                        "labels":this.selectLabel,
+                        "cities":this.selectCity,
+                        "albumId": this.albumId
+                    }).then((res)=>{
+                        if(res.data.status == 1){
+                            this.nodata = true;
+                            this.intelligenceData = res.data.data.list;
+                            if(res.data.data.list.length == 0){
+                                this.noDataFlag = true
+                            }else{
+                                this.noDataFlag = false
+                            }
+                        }else{
+                            
+                        }
+                    })
                     done();
                 }, 2000)
             },
@@ -310,7 +292,7 @@
             },
             async getAlbumLabel() { // 获取标签和城市
                 this.loading = true;
-                let url = '/vc/albumFlow/queryAlbumLabel?albumId=' + this.albumId;
+                let url = '/vc/albumFlow/queryAlbumLabel?albumId=' + this.albumId+ '&limitNum=10';
                 await this.axios.post(url).then((res) => {
                     if (res.data.status == 1) {
                         this.labels = res.data.data.labels;
@@ -347,8 +329,8 @@
                     this.intelligenceData = [];
                 }else{
                     this.query.pageNum = 1;
-                    this.flag = true;
                     this.intelligenceData = [];
+                    this.nodata = false;
                     this.getProjectByLabel();
                 }
 

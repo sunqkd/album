@@ -314,7 +314,7 @@
             },
             async getAlbumLabel() { // 获取标签和城市
                 this.loading = true;
-                let url = '/vc/albumFlow/queryFlowLabel?flowId=' + this.flowId;
+                let url = '/vc/albumFlow/queryFlowLabel?flowId=' + this.flowId + '&limitNum=10';
                 await this.axios.post(url).then((res) => {
                     if (res.data.status == 1) {
                         this.labels = res.data.data.labels;

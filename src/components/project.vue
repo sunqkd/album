@@ -129,6 +129,10 @@
                 暂无数据
             </div>
         </div>
+        <!-- 初次数据 渲染-->
+        <div v-if="loading" style="display:flex;justify-content:center">
+            <img src="./img/loading.gif" alt="">
+        </div>
         <div class="bottom-footer" v-if="login == 1 || login == 2 || login == 3">
             <!-- 用户登录 用户创建 -->
             <div class="userSelf" v-if="login == 1">
@@ -206,7 +210,7 @@
                 tips:false, // 弹窗
                 text:'删除成功',
                 nodata:false,
-                noDataText:''
+                noDataText:'',
             }
         },
         beforeRouteUpdate(to,from,next){
@@ -260,8 +264,28 @@
         methods:{
             refresh(done){
                 this.queryInfo.pageNum = 1;
-                this.getAlbumProjects();
                 setTimeout(() => {
+                    this.axios.post('/vc/albumFlow/queryAlbumProjects',{},{
+                        params:{
+                            "pageSize":this.queryInfo.pageSize,
+                            "pageNum":this.queryInfo.pageNum,
+                            "albumId":this.albumId
+                        }
+                    }).then((res)=>{
+                        if(res.data.status == 1){
+                            this.nodata = true;
+                            let proList = res.data.data.list;
+                            for(var i = 0;i< proList.length;i++){
+                                proList[i].projectChecked = false;
+                            }
+                            this.projectDataList = proList;
+                            if(this.projectDataList.length == 0){
+                                this.noDataFlag = true
+                            }else{
+                                this.noDataFlag = false
+                            }
+                        }
+                    })
                     done();
                 }, 1500)
             },
@@ -324,6 +348,7 @@
                 this.projectCodesData = projectCode;
             },
             getAlbumProjects(){ // 获取专辑项目
+                this.loading = true;
                 this.axios.post('/vc/albumFlow/queryAlbumProjects',{},{
                     params:{
                         "pageSize":this.queryInfo.pageSize,
@@ -333,6 +358,7 @@
                 }).then((res)=>{
                     if(res.data.status == 1){
                         this.nodata = true;
+                        this.loading = false;
                         let proList = res.data.data.list;
                         for(var i = 0;i< proList.length;i++){
                             proList[i].projectChecked = false;

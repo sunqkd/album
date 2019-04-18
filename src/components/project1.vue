@@ -124,10 +124,10 @@
             <img src="./img/nocollect.png" alt class="nocontent">
             <div class="nocontentText">暂无数据</div>
         </div>
-        <!-- <div class="loading" v-if="loading">
-            <img src="./img/loading.gif" alt>
-            <span>正在加载中</span>
-        </div> -->
+        <!-- 初次数据 渲染-->
+        <div v-if="loading" style="display:flex;justify-content:center">
+            <img src="./img/loading.gif" alt="">
+        </div>
         <div class="bottom-footer" v-if="login == 1 || login == 2 || login == 3">
             <!-- 用户登录 用户创建 -->
             <div class="userSelf" v-if="login == 1">
@@ -265,8 +265,30 @@
         methods: {
             refresh(done){ // 下拉刷新
                 this.queryInfo.pageNum = 1;
-                this.getAlbumProjects();
                 setTimeout(() => {
+                    this.axios.post("/vc/albumFlow/queryFlowProjects",{},{
+                        params: {
+                            pageSize: this.queryInfo.pageSize,
+                            pageNum: this.queryInfo.pageNum,
+                            flowId: this.flowId
+                        }
+                    }).then(res => {
+                        if (res.data.status == 1) {
+                            this.nodata=true;
+                            let proList = res.data.data.list;
+                            for (var i = 0; i < proList.length; i++) {
+                                proList[i].projectChecked = false;
+                            }
+                            this.projectDataList = proList;
+                            if (this.projectDataList.length == 0) {
+                                this.noDataFlag = true;
+                            } else {
+                                this.noDataFlag = false;
+                            }
+                        }else{
+                            this.nodata=false;
+                        }
+                    });
                     done();
                 }, 1500)
             },
@@ -329,6 +351,7 @@
                 this.projectCodesData = projectCode;
             },
             getAlbumProjects() { // 获取专辑项目
+                this.loading = true;
                 this.axios.post("/vc/albumFlow/queryFlowProjects",{},{
                     params: {
                         pageSize: this.queryInfo.pageSize,
@@ -337,8 +360,8 @@
                     }
                 }).then(res => {
                     if (res.data.status == 1) {
-                        console.log("正常加载");
                         this.nodata=true;
+                        this.loading = false;
                         let proList = res.data.data.list;
                         for (var i = 0; i < proList.length; i++) {
                             proList[i].projectChecked = false;
@@ -349,19 +372,22 @@
                         } else {
                             this.noDataFlag = false;
                         }
+                    }else{
+                        
                     }
                 });
             },
             addProject() { // 添加项目
-                let flowId = this.flowId;
-                console.log(flowId);
-                if (window.webkit) {
-                    window.webkit.messageHandlers.addProjectList.postMessage({
-                        body: flowId
-                    });
-                } else {
-                    window.addProjectList.sendermsg(flowId);
-                }
+                // let flowId = this.flowId;
+                // console.log(flowId);
+                // if (window.webkit) {
+                //     window.webkit.messageHandlers.addProjectList.postMessage({
+                //         body: flowId
+                //     });
+                // } else {
+                //     window.addProjectList.sendermsg(flowId);
+                // }
+                this.$router.push({path:'/globalSearch',query:{flowId:this.flowId}})
             },
             manageProject() {  // 管理项目
                 this.manageProjectFlag = true;

@@ -454,7 +454,8 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 /* 机构 */
 .orgContain{
     width:100%;
-    /* background: #ffffff; */
+    height:100%;
+    position:relative;
 }
 .orgContainUL{
     width:100%;
@@ -809,7 +810,6 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     position:absolute;
     bottom:24px;
     left:0;
-    /* background:pink; */
 }
 .containButton button{
     border:none;
@@ -821,4 +821,132 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     border-radius:20px;
 }
 /* 全局搜索  */
+#globalSearch{
+    width:100%;
+    height:100%;
+    background:#FFFFFF;
+}
+.gSearchInfo{
+    width: 100%;
+    height:42px;
+    padding:0px 10px;
+    box-sizing: border-box;
+    background:rgba(255,255,255,1);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:10px;
+    padding-top:11px;
+}
+.inputContain{
+    width:calc(100% - 38px);
+    height:100%;
+    display:flex;
+}
+.leftInput{
+    width:28px;
+    height:100%;
+    display:flex;
+    justify-content:flex-end;
+    align-items: center;
+    background:rgba(244,246,246,1);
+    border-top-left-radius:18px;
+    border-bottom-left-radius:18px;
+}
+.leftInput img,.rightInput img{
+    width:16px;
+    height:16px;
+}
+.rightInput{
+    width:28px;
+    height:100%;
+    display:flex;
+    justify-content:flex-start;
+    align-items: center;
+    background:rgba(244,246,246,1);
+    border-top-right-radius:18px;
+    border-bottom-right-radius:18px;
+}
+.inputSearch{
+    width:calc(100% - 56px);
+    height:100%;
+    border:none;
+    background:rgba(244,246,246,1);
+    outline: none;
+    text-indent: 5px;
+}
+.cancelGoBack{
+    display:block;
+    width:32px;
+    height:32px;
+    font-size:15px;
+    color:rgba(78,88,92,1);
+    line-height:32px;
+}
+.searinfoContent{
+    position:relative;
+    width:100%;
+    height:calc(100% - 53px);
+    background:#FFFFFF;
+}
+.searinfoContentUl{
+    width:100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.searinfoContentLi{
+    width:100%;
+    padding: 10px 0 2px 0;
+    box-sizing: border-box;
+    display:flex;
+    justify-content: space-between;
+}
+.infoContentLilogo{
+    width:40px;
+    height:40px;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    border-radius:8px;
+    border:1px solid rgba(240,240,240,1);
+}
+.infoContentLilogo img{
+    width:100%;
+    height:auto;
+    border-radius: 8px;
+}
+.gImgContain{
+    width:100%;
+    height:100%;
+    background:#91a3af;
+    border-radius: 8px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:22px;
+    color:#FFFFFF;
+}
+.infoContentLiRight{
+    width:calc(100% - 50px);
+    padding-bottom:11px;
+    border-bottom:1px solid rgba(240,240,240,1);
+}
+.searchTitle{
+    margin-bottom:4px;
+}
+.searchTitle span:nth-child(1){
+    color:rgba(78,88,92,1);
+    font-size:16px;
+    line-height:20px;
+    font-weight: bold;
+}
+.searchTitle span:nth-child(2){
+    font-size: 12px;
+    color:#666666;
+}
+.infoContentLiRight .digist{
+    color:rgba(113,129,135,1);
+    font-size:12px;
+    line-height:16px;
+}
 </style>

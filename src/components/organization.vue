@@ -1,5 +1,5 @@
 <template id="organization">
-    <div class="orgContain">
+    <div class="orgContain" style="height:100%">
         <scroller  :on-refresh="refresh" :on-infinite="infinite" refresh-layer-color="#4b8bf4"
             loading-layer-color="#ec4949" ref="my_scrolleror" :noDataText="noDataText">
             <!-- 上啦动画 -->
@@ -39,7 +39,6 @@
                     </line>
                 </g>
             </svg>
-
             <ul class="orgContainUL">
                 <li class="orgContainLI" v-for="(item,index) in orgData" :key="index" @click="orgdetail(item)">
                     <div class="orgliContent">
@@ -52,7 +51,6 @@
                     <div class="borderBg"></div>
                 </li>
             </ul>
-
             <!-- 下拉动画 -->
             <svg class="spinner" style="stroke: #4b8bf4;" slot="infinite-spinner" viewBox="0 0 64 64">
                 <g stroke-width="7" stroke-linecap="round">
@@ -90,13 +88,16 @@
                     </line>
                 </g>
             </svg>
-
         </scroller>
+        
         <div class="activeContain" v-if="noDataFlag">
             <img src="./img/nocollect.png" alt="" class="nocontent">
             <div class="nocontentText">
                 暂无数据
             </div>
+        </div>
+        <div v-if="loading" style="display:flex;justify-content:center">
+            <img src="./img/loading.gif" alt="">
         </div>
     </div>
 </template>
@@ -114,7 +115,8 @@
                 },
                 noDataFlag:false,
                 nodata:false,
-                noDataText:""
+                noDataText:"",
+                loading:false,
             }
         },
         created(){
@@ -127,7 +129,23 @@
             refresh(done){ // 下拉刷新
                 this.query.pageNum = 1;
                 setTimeout(() => {
-                    this.getAlbumCompany();
+                    this.axios.post('/vc/albumFlow/queryAlbumCompany',{},{
+                        params:{
+                            "pageSize":this.query.pageSize,
+                            "pageNum":this.query.pageNum,
+                            "albumId":this.albumId
+                        }
+                    }).then((res)=>{
+                        if(res.data.status == 1){
+                            this.nodata = true;
+                            this.orgData = res.data.data.list;
+                            if(res.data.data.list.length == 0){
+                                this.noDataFlag = true
+                            }else{
+                                this.noDataFlag = false
+                            }
+                        }
+                    })
                     done();
                 }, 1500)
             },
@@ -161,6 +179,7 @@
                 }
             },
             getAlbumCompany(){
+                this.loading = true;
                 this.axios.post('/vc/albumFlow/queryAlbumCompany',{},{
                     params:{
                         "pageSize":this.query.pageSize,
@@ -170,6 +189,7 @@
                 }).then((res)=>{
                     if(res.data.status == 1){
                         this.nodata = true;
+                        this.loading = true;
                         this.orgData = res.data.data.list;
                         if(res.data.data.list.length == 0){
                             this.noDataFlag = true

@@ -106,7 +106,6 @@
             this.share();
         },
         methods: {
-
             getShareUrl(){ // 分享
                 let url = 'http://test1.dyly.com/album/index.html#/project?userId='+ this.query.userId+ '&token='+ '&albumId=' + this.query.albumId;
                 // let url = 'https://www.dyly.com/album/index.html#/project?userId='+ this.query.userId+ '&token='+ '&albumId=' + this.query.albumId;
