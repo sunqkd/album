@@ -41,7 +41,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     font-size: 20px;
     line-height: 24px;
     box-sizing: border-box;
-    font-weight: 550;
+    font-weight: bold;
     color:rgba(78,88,92,1);
 }
 .editorimg{
