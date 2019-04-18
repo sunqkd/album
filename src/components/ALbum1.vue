@@ -178,6 +178,7 @@
             clearScroll(data) { // 置顶操作
                 window.scrollTo(0, 0);
                 this.activeNav = data;
+                document.getElementById("titleContain").style.display = 'block';
             },
             async getAlbumById(){ // 获取专辑详情
                 let url = '/vc/albumFlow/queryFlowById?flowId='+ this.query.flowId;

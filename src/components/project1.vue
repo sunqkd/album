@@ -256,10 +256,8 @@
                 that.y = top
                 if(that.y > 100){
                     document.getElementById("titleContain").style.display = 'none'
-                    document.getElementById('intelligenceBanner').style.display = 'none';
                 }else{
                     document.getElementById("titleContain").style.display = 'block';
-                    document.getElementById('intelligenceBanner').style.display = 'block';
                 }
             }
             that.timer = setInterval(fn, 10)
@@ -490,6 +488,9 @@
         components: {
             projectAlbum: projectAlbum,
             alertInfo: alertInfo
+        },
+        destroyed(){
+            clearInterval(this.timer)
         }
     };
 </script>
