@@ -356,13 +356,14 @@
                 }
             },
             addProject(){ // 添加项目
-                let albumId = this.albumId;
-                console.log(albumId);
-                if(window.webkit){
-                    window.webkit.messageHandlers.addProjectList.postMessage({body: albumId});
-                }else{
-                    window.addProjectList.sendermsg(albumId);
-                }
+                // let albumId = this.albumId;
+                // console.log(albumId);
+                // if(window.webkit){
+                //     window.webkit.messageHandlers.addProjectList.postMessage({body: albumId});
+                // }else{
+                //     window.addProjectList.sendermsg(albumId);
+                // }
+                this.$router.push({path:'/globalSearch',query:{albumId:this.albumId}})
             },
             manageProject(){ // 管理项目
                 this.manageProjectFlag = true;

@@ -17,7 +17,7 @@ import News1 from '@/components/news1';
 import Activity1 from '@/components/activity1';
 import Report1 from '@/components/report1';
 import ALbum1 from '@/components/ALbum1';
-
+import globalSearch from '@/components/globalSearch'
 
 Vue.use(Router)
 
@@ -58,6 +58,10 @@ export default new Router({
 					component: Report
 				}
 			]
+		},
+		{
+			path:'/globalSearch',
+			component:globalSearch
 		},
 		// {
 		// 	path: '*',
