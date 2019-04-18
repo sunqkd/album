@@ -231,7 +231,7 @@
                 let {left, top} = that.$refs.my_scroller.getPosition()
                 that.x = left
                 that.y = top
-                if(that.y > 100){
+                if(that.y > 150){
                     document.getElementById("titleContain").style.display = 'none'
                     document.getElementById('intelligenceBanner').style.display = 'none';
                 }else{

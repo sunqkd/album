@@ -254,7 +254,7 @@
                 let {left, top} = that.$refs.project1Scroll.getPosition()
                 that.x = left
                 that.y = top
-                if(that.y > 100){
+                if(that.y > 150){
                     document.getElementById("titleContain").style.display = 'none'
                 }else{
                     document.getElementById("titleContain").style.display = 'block';
