@@ -115,8 +115,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top:5px;
-    background:pink;
+    margin-top:6px;
 }
 /* 项目样式 */
 .projectContain{
