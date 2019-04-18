@@ -116,6 +116,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     display: flex;
     align-items: center;
     margin-top:5px;
+    justify-content: center;
 }
 /* 项目样式 */
 .projectContain{
@@ -127,6 +128,8 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 }
 .projectDataContain{
     width:100%;
+    padding:6px 8px 0px 8px;
+    box-sizing: border-box;
 }
 .projectDataContain li {
     width:100%;
@@ -152,10 +155,11 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    border:1px solid rgba(240,240,240,1);
 }
 .projectImgContain img{
     width:100%;
-    height:auto;
+    height:100%;
     border-radius: 8px;
 }
 .projectImgContain div{
@@ -178,10 +182,20 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 }
 .projectName{
     font-size:16px;
-    font-weight:500;
+    font-weight:bold;
     color:rgba(78,88,92,1);
     line-height:20px;
     font-family:PingFangSC-Medium;
+}
+.projectName .stockCode{
+    display:inline-block;
+    background:rgba(182,153,106,0.2);
+    border-radius:4px;
+    padding:2px 6px;
+    font-size:11px;
+    color:rgba(182,153,106,1);
+    font-weight:normal;
+    margin:0 6px;
 }
 .projectCityName{
     font-weight:400;
@@ -418,7 +432,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     white-space:nowrap
 }
 .noActiveLabel {
-    padding:5px 8px;
+    padding:4px 11px;
     font-weight:400;
     color:rgba(113,129,135,1);
     font-size: 12px;
