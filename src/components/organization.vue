@@ -96,9 +96,9 @@
                 暂无数据
             </div>
         </div>
-        <div v-if="loading" style="display:flex;justify-content:center">
+        <!-- <div v-if="loading" style="display:flex;justify-content:center">
             <img src="./img/loading.gif" alt="">
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
