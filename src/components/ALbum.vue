@@ -93,6 +93,14 @@
             this.getShareUrl();
         },
         watch:{
+            $route(to,from){
+                console.log(to);
+                console.log(from);
+                if(to.fullPath !== from.fullPath){
+                    console.log("shuxin ")
+                    window.location.reload();
+                }
+            },
             albumTitle(data){
                 this.shareWxTitle();
                 this.shareSubTitle();
