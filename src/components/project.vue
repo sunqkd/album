@@ -413,6 +413,7 @@
             manageMyAlbum(){ // 管理整个专辑
                 this.$router.push({path:'/project',query:{userId:this.userId,token:this.token,albumId:this.newalbumid}})
                 this.copylogin = false;
+                window.location.reload();
                 if(window.webkit){
                     window.webkit.messageHandlers.refreshHtml({body:window.location.href})
                 }else{
