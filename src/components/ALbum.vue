@@ -94,17 +94,17 @@
         },
         watch:{
             async $route(to,from){
-                // console.log(to);
-                // console.log(from);
-                // if(to.fullPath !== from.fullPath){
-                //     console.log("shuxin ")
-                //     // window.location.reload();
-                //     // alert(123);
-                //     await this.getAlbumById();
-                //     this.shareWxTitle();
-                //     await this.shareSubTitle();
-                //     this.share();
-                // }
+                console.log(to);
+                console.log(from);
+                if(to.fullPath !== from.fullPath){
+                    console.log("shuxin ")
+                    window.location.reload();
+                    // alert(123);
+                    await this.getAlbumById();
+                    this.shareWxTitle();
+                    await this.shareSubTitle();
+                    this.share();
+                }
             },
             albumTitle(data){
                 this.shareWxTitle();
