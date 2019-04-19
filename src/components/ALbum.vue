@@ -93,6 +93,12 @@
             this.getShareUrl();
         },
         watch:{
+            $route(to,from){
+                // console.log(to.fullPath)
+                // if(to.fullPath !== from.fullPath){
+                   
+                // }
+            },
             albumTitle(data){
                 this.shareWxTitle();
                 this.shareSubTitle();

@@ -411,13 +411,11 @@
                 this.copyText = "已复制整个专辑";
             },
             manageMyAlbum(){ // 管理整个专辑
-                // console.log("跳转");
                 this.$router.push({path:'/project',query:{userId:this.userId,token:this.token,albumId:this.newalbumid}})
                 this.copylogin = false;
-                location.reload();
                 // window.location.reload();
-                // window.reload();
-                // this.router.go(0)
+                // location.replace(location.href);
+                window.location.href = location.href+'&time='+((new Date()).getTime())
             },
             gotoProjectDetail(data){ // 调用原声方法
                 // console.log({body:data});
@@ -428,7 +426,7 @@
                 }else{
                     window.goProDetail.sendermsg(projectCode);
                 }
-            }
+            },
         },
         destroyed(){
             clearInterval(this.timer)
