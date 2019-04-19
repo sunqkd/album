@@ -154,7 +154,7 @@ export default {
             this.keyWord = '';
         },
         goback(){ // 返回
-            this.$router.back(-1);
+            this.$router.go(-1);
         },
         getSearchInfo(){ // 搜索数据
             this.searchData = [];
