@@ -316,12 +316,12 @@
             addProject(){ // 添加项目
                 // let albumId = this.albumId;
                 // console.log(albumId);
-                // if(window.webkit){
-                //     window.webkit.messageHandlers.addProjectList.postMessage({body: albumId});
-                // }else{
-                //     window.addProjectList.sendermsg(albumId);
-                // }
                 this.$router.push({path:'/globalSearch',query:{userId:this.userId,token:this.token,albumId:this.albumId}})
+                if(window.webkit){
+                    window.webkit.messageHandlers.addProject.postMessage({body: albumId});
+                }else{
+                    window.addProject.sendermsg(albumId);
+                }
             },
             manageProject(){ // 管理项目
                 this.manageProjectFlag = true;
