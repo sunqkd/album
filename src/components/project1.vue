@@ -310,7 +310,7 @@
                 // } else {
                 //     window.addProjectList.sendermsg(flowId);
                 // }
-                this.$router.push({path:'/globalSearch',query:{flowId:this.flowId}})
+                this.$router.push({path:'/globalSearch',query:{userId:this.userId,token:this.token,flowId:this.flowId}})
             },
             manageProject() {  // 管理项目
                 this.manageProjectFlag = true;

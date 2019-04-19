@@ -154,7 +154,11 @@ export default {
             this.keyWord = '';
         },
         goback(){ // 返回
-            this.$router.go(-1);
+            if(this.params.albumId){ // 专辑
+                this.$router.push({path:'/project',query:{userId:this.params.userId,token:this.params.token,albumId:this.params.albumId}})
+            }else{ // 收藏
+                this.$router.push({path:'/collect/project1',query:{userId:this.params.userId,token:this.params.token,flowId:this.params.flowId}})
+            }
         },
         getSearchInfo(){ // 搜索数据
             this.searchData = [];

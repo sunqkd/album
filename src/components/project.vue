@@ -319,7 +319,7 @@
                 // }else{
                 //     window.addProjectList.sendermsg(albumId);
                 // }
-                this.$router.push({path:'/globalSearch',query:{albumId:this.albumId}})
+                this.$router.push({path:'/globalSearch',query:{userId:this.userId,token:this.token,albumId:this.albumId}})
             },
             manageProject(){ // 管理项目
                 this.manageProjectFlag = true;
