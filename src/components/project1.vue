@@ -209,8 +209,6 @@
             };
         },
         beforeRouteUpdate(to, from, next) {
-            console.log(to);
-            console.log(from);
             next();
         },
         watch: {
