@@ -148,7 +148,23 @@
             next();
         },
         watch:{
-           
+        //    $route(to,from){
+        //         this.token = this.$route.query.token; // 登录信息
+        //         this.albumId = this.$route.query.albumId // 专辑ID
+        //         this.userId =  this.$route.query.userId // 用户ID
+            
+        //         if(this.createdById == this.userId && this.token.length > 10){ // 自己创建 并且已经登录
+        //             console.log("自己创建并且已经登录")
+        //             this.login = 1;
+        //         }else if(this.createdById != this.userId && this.token.length > 10){ // 已登录不是自己创建
+        //             console.log("已经登录不是自己创建");
+        //             this.login = 2;
+        //         }else{
+        //             console.log("未登录")
+        //             this.login = 5;
+        //         }
+        //         this.getAlbumProjects();
+        //    }
         },
         props:{
             createdById:{
