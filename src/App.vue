@@ -453,7 +453,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 .intelligenceContent{
     width:100%;
     background:#f4f6f6;
-    padding:0 8px;
+    /* padding:0 8px; */
     box-sizing: border-box;
 }
 
