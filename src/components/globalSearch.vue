@@ -161,9 +161,9 @@ export default {
             }
 
             if(window.webkit){
-                window.webkit.messageHandlers.cancelProject.postMessage({body: '123'});
+                window.webkit.messageHandlers.showShare.postMessage({body: '123'});
             }else{
-                window.cancelProject.sendermsg('123');
+                window.showShare.sendermsg('123');
             }
         },
         getSearchInfo(){ // 搜索数据

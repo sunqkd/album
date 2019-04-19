@@ -318,9 +318,9 @@
                 // console.log(albumId);
                 this.$router.push({path:'/globalSearch',query:{userId:this.userId,token:this.token,albumId:this.albumId}})
                 if(window.webkit){
-                    window.webkit.messageHandlers.addProject.postMessage({body: this.albumId});
+                    window.webkit.messageHandlers.hideShare.postMessage({body: this.albumId});
                 }else{
-                    window.addProject.sendermsg(this.albumId);
+                    window.hideShare.sendermsg(this.albumId);
                 }
             },
             manageProject(){ // 管理项目

@@ -312,9 +312,9 @@
                 // }
                 this.$router.push({path:'/globalSearch',query:{userId:this.userId,token:this.token,flowId:this.flowId}})
                 if(window.webkit){
-                    window.webkit.messageHandlers.addProject.postMessage({body: this.flowId});
+                    window.webkit.messageHandlers.hideShare.postMessage({body: this.flowId});
                 }else{
-                    window.addProject.sendermsg(this.flowId);
+                    window.hideShare.sendermsg(this.flowId);
                 }
             },
             manageProject() {  // 管理项目
