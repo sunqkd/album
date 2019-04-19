@@ -93,18 +93,6 @@
             this.getShareUrl();
         },
         watch:{
-            async $route(to,from){
-                console.log(to);
-                console.log(from);
-                if(to.fullPath !== from.fullPath){
-                    window.location.reload();
-                    alert(123);
-                    await this.getAlbumById();
-                    this.shareWxTitle();
-                    await this.shareSubTitle();
-                    this.share();
-                }
-            },
             albumTitle(data){
                 this.shareWxTitle();
                 this.shareSubTitle();
