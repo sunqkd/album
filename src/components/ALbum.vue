@@ -90,7 +90,6 @@
         created() {
             this.splitHref(window.location.href);
             this.getShareUrl();
-           
         },
         watch:{
             albumTitle(data){
@@ -100,7 +99,7 @@
         },
         async mounted() {
             await this.getAlbumById();
-            this.addlisten();
+            // this.addlisten();
             this.shareWxTitle();
             await this.shareSubTitle();
             this.share();

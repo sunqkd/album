@@ -96,7 +96,7 @@
         },
         async mounted() {
             await this.getAlbumById();
-            this.addlisten();
+            // this.addlisten();
             this.shareWxTitle();
         },
         methods: {
