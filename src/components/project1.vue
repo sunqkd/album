@@ -15,7 +15,7 @@
                     <div class="projectRight">
                         <div class="projectOneLine">
                             <div class="projectName">
-                                {{item.name}}
+                                <span class="projectName-name">{{item.name}}</span>
                                 <span v-if="item.stockCode" class="stockCode">{{item.stockCode}}</span>
                             </div>
                             <div class="projectCityName">{{item.cityName?item.cityName:''}}</div>

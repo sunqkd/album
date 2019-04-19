@@ -15,10 +15,10 @@
             </div>
             <div class="userInfo">
                 <div class="userImg">
-                    <div class="userImgContain">
+                    <div class="userImgContain" v-if="createSelfFlag">
                         <img :src="this.customerImage" alt="">
                     </div>
-                    <span>{{this.createdBy}}</span>
+                    <span v-if="createSelfFlag">{{this.createdBy}}</span>
                 </div>
                 <div>
                     {{this.projectNum}}个项目
@@ -82,6 +82,7 @@
                 tips:false,
                 text:'超过24个字符',
                 shareUrl:'', // 分享链接
+                createSelfFlag:false, // 默认是自己创建
             }
         },
         computed:{
@@ -206,8 +207,10 @@
                         this.albumType = res.data.data.albumType; // 是否私密
                         if(res.data.data.userId == this.query.userId && this.query.token.length > 10){ // 本人创建 并且登录 可以编辑
                             this.editorImg = true;
+                            this.createSelfFlag = false;
                         }else{
                             this.editorImg = false;
+                            this.createSelfFlag = true;
                         }
                         this.createdById = res.data.data.userId; // 专辑创建人Id
                     }

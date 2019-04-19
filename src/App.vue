@@ -180,6 +180,10 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     position:relative;
 }
 .projectName{
+    font-size: 0;
+    height: 20px;
+}
+.projectName .projectName-name{
     font-size:16px;
     font-weight:bold;
     color:rgba(78,88,92,1);
@@ -187,7 +191,6 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     font-family:PingFangSC-Medium;
 }
 .projectName .stockCode{
-    display:inline-block;
     background:rgba(182,153,106,0.2);
     border-radius:4px;
     padding:2px 6px;
@@ -196,6 +199,8 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     font-weight:normal;
     margin:0 6px;
     line-height:11px;
+    float: right;
+    margin-top: 3px;
 }
 .projectCityName{
     font-weight:400;
