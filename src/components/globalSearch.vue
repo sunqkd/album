@@ -6,7 +6,7 @@
                 <div class="leftInput">
                     <img src="./img/search.png" alt="">
                 </div>
-                <input type="text"  class="inputSearch" v-model="keyWord" @keyup.enter.prevent="$event.target.blur" @blur="getSearchInfo()"/>
+                <input type="text"  class="inputSearch" placeholder="输入项目名称" v-model="keyWord" @keyup.enter.prevent="$event.target.blur" @blur="getSearchInfo()"/>
                 <div class="rightInput">
                     <img src="./img/slice.png" alt="" @click="cancelkeyWord()">
                 </div>

@@ -413,7 +413,11 @@
             manageMyAlbum(){ // 管理整个专辑
                 this.$router.push({path:'/project',query:{userId:this.userId,token:this.token,albumId:this.newalbumid}})
                 this.copylogin = false;
-                window.location.reload();
+                if(window.webkit){
+                    window.webkit.messageHandlers.refreshHtml({body:window.location.href})
+                }else{
+                    window.refreshHtml.sendermsg(window.location.href);
+                }
             },
             gotoProjectDetail(data){ // 调用原声方法
                 // console.log({body:data});
