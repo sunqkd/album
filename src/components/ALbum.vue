@@ -98,7 +98,8 @@
                 console.log(from);
                 if(to.fullPath !== from.fullPath){
                     console.log("shuxin ")
-                    window.location.reload();
+                    // window.location.reload();
+                    alert(123);
                 }
             },
             albumTitle(data){
