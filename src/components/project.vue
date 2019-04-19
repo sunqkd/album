@@ -403,7 +403,6 @@
             },
             goToAndroid(){
                 console.log("调用Android的方法");
-
             },
             IKnow(){ // 我知道了
                 this.copylogin = false;
@@ -411,10 +410,10 @@
                 this.copyText = "已复制整个专辑";
             },
             manageMyAlbum(){ // 管理整个专辑
-                console.log("跳转");
+                // console.log("跳转");
                 this.$router.push({path:'/project',query:{userId:this.userId,token:this.token,albumId:this.newalbumid}})
                 this.copylogin = false;
-                window.location.reload();
+                // window.location.reload();
             },
             gotoProjectDetail(data){ // 调用原声方法
                 // console.log({body:data});
