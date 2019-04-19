@@ -413,9 +413,7 @@
             manageMyAlbum(){ // 管理整个专辑
                 this.$router.push({path:'/project',query:{userId:this.userId,token:this.token,albumId:this.newalbumid}})
                 this.copylogin = false;
-                // window.location.reload();
-                // location.replace(location.href);
-                window.location.href = location.href+'&time='+((new Date()).getTime())
+                window.location.reload();
             },
             gotoProjectDetail(data){ // 调用原声方法
                 // console.log({body:data});
