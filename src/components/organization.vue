@@ -60,7 +60,7 @@
                 let {left, top} = that.$refs.my_scrolleror.getPosition()
                 that.x = left
                 that.y = top
-                if(that.y > 150){
+                if(that.y > 200){
                     document.getElementById("titleContain").style.display = 'none'
                 }else{
                     document.getElementById("titleContain").style.display = 'block';

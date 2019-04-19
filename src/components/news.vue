@@ -45,7 +45,7 @@
                 newsList: [], // 新闻列表
                 query: {
                     pageNum: 1,
-                    pageSize: 10
+                    pageSize: 20
                 },
                 noDataFlag: false,
                 nodata:false, // 禁止下拉刷新
@@ -65,7 +65,7 @@
                 let {left, top} = that.$refs.my_scrollerNew.getPosition()
                 that.x = left
                 that.y = top
-                if(that.y > 150){
+                if(that.y > 200){
                     document.getElementById("titleContain").style.display = 'none'
                 }else{
                     document.getElementById("titleContain").style.display = 'block';

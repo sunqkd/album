@@ -125,7 +125,7 @@
                 let {left, top} = that.$refs.my_scroller.getPosition()
                 that.x = left
                 that.y = top
-                if(that.y > 150){
+                if(that.y > 200){
                     document.getElementById("titleContain").style.display = 'none'
                     document.getElementById('intelligenceBanner').style.display = 'none';
                 }else{
@@ -260,7 +260,6 @@
                 }else{
                     this.query.pageNum = 1;
                     this.intelligenceData = [];
-                    this.nodata = false;
                     this.getProjectByLabel();
                 }
 
