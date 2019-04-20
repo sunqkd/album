@@ -753,12 +753,14 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     display:flex;
     align-items: center;
     right:0;
-    top:20px;
+    top:0px;
     z-index:10;
+    width: 100%;
+    height:100%;
 }
 .collect_right input{
-    width: 24px;
-    height: 24px;
+    /* width: 24px;
+    height: 24px; */
     opacity:0;
     filter:alpha(opacity=0);
     z-index: 5;
@@ -766,6 +768,9 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     left: 0;
     top: 0px;
     cursor:pointer;
+    width: 100%;
+    height:100%;
+    outline: none;
 }
 .collect_right input:checked + i{
     background:url('./components/img/choose.png') no-repeat;
@@ -779,8 +784,8 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     display: inline-block;
     z-index: 3;
     position: absolute;
-    left: 0;
-    top: 0px;
+    right: 0;
+    top: 20px;
 }
 
 #alertInfo{
