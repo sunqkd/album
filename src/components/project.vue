@@ -428,8 +428,10 @@
                 console.log(projectCode);
                 if(window.webkit){
                     window.webkit.messageHandlers.goProDetail.postMessage({body: projectCode});
-                }else{
+                }else if(window.goProDetail){
                     window.goProDetail.sendermsg(projectCode);
+                }else{
+                    window.location.href = 'https://m.dyly.com/'
                 }
             },
         },
