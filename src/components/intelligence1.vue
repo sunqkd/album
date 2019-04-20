@@ -70,14 +70,14 @@
                             </div>
                         </li>
                     </ul>
+                    <div class="loading" v-if="loading">
+                        <img src="./img/loading.gif" alt="">
+                    </div>
                     <div class="activeContain" v-if="noDataFlag">
                         <img src="./img/nocollect.png" alt="" class="nocontent">
                         <div class="nocontentText">
                             暂无数据
                         </div>
-                    </div>
-                    <div class="loading" v-if="loading">
-                        <img src="./img/loading.gif" alt="">
                     </div>
                 </div>
                 <!-- 下拉动画 -->
