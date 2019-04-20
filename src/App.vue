@@ -155,6 +155,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     justify-content: center;
     border-radius: 8px;
     border:1px solid rgba(240,240,240,1);
+    overflow: hidden;
 }
 .projectImgContain img{
     width:100%;
