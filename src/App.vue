@@ -767,7 +767,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     position: relative;
     left: 0;
     top: 0px;
-    cursor:pointer;
+    /* cursor:pointer; */
     width: 100%;
     height:100%;
     outline: none;
