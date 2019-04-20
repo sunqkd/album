@@ -134,8 +134,10 @@
                 // console.log(newId);
                 if (window.webkit) {
                     window.webkit.messageHandlers.newsDetail.postMessage({ body: newId });
-                } else {
+                }else if(window.newsDetail){
                     window.newsDetail.sendermsg(newId);
+                }else{
+                    window.location.href = 'https://m.dyly.com/'
                 }
             },
             getNews(){

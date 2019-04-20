@@ -148,8 +148,10 @@
                 // console.log(companyId);
                 if(window.webkit){
                     window.webkit.messageHandlers.orgDetail.postMessage({body: companyId});
-                }else{
+                }else if(window.orgDetail){
                     window.orgDetail.sendermsg(companyId);
+                }else{
+                    window.location.href = 'https://m.dyly.com/'
                 }
             },
         },

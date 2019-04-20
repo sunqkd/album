@@ -214,11 +214,13 @@
             goProDetail(data){
                 // console.log(data);
                 let projectCode = data.projectCode;
-                console.log(projectCode);
+                // console.log(projectCode);
                 if(window.webkit){
                     window.webkit.messageHandlers.goIntProDetail.postMessage({body: projectCode});
-                }else{
+                }else if(window.goIntProDetail){
                     window.goIntProDetail.sendermsg(projectCode);
+                }else{
+                    window.location.href = 'https://m.dyly.com/'
                 }
             },
             async getAlbumLabel() { // 获取标签和城市
