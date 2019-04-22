@@ -100,23 +100,23 @@
                 // }
             },
             albumTitle(data){
-                this.shareWxTitle();
+                // this.shareWxTitle();
                 this.shareSubTitle();
             }
         },
         async mounted() {
             await this.getAlbumById();
             // this.addlisten();
-            this.shareWxTitle();
+            // this.shareWxTitle();
             await this.shareSubTitle();
             this.share();
         },
         methods: {
             getShareUrl(){ // 分享
                 // 测试
-                let url = 'http://test1.dyly.com/album/index.html#/project?userId='+ this.query.userId+ '&token='+ '&albumId=' + this.query.albumId;
+                // let url = 'http://test1.dyly.com/album/index.html#/project?userId='+ this.query.userId+ '&token='+ '&albumId=' + this.query.albumId;
                 // 线上
-                // let url = 'https://www.dyly.com/album/index.html#/project?userId='+ this.query.userId+ '&token='+ '&albumId=' + this.query.albumId;
+                let url = 'https://www.dyly.com/album/index.html#/project?userId='+ this.query.userId+ '&token='+ '&albumId=' + this.query.albumId;
                 // console.log(url);
                 document.querySelector('meta[property="og:url"]').setAttribute('content',url);
                 // console.log(document.querySelector('meta[property="og:url"]').getAttribute('content')) 
@@ -250,8 +250,12 @@
                 let url = '/vc/albumFlow/queryAlbumProjectsShare?albumId='+ this.query.albumId;
                 await this.axios.post(url).then((res)=>{
                     if(res.data.status == 1){
-                        let strsub =  res.data.data.total + '个项目：' + res.data.data.projectNames.join(",")
-                        $(".shareDesc").text(strsub);
+                        let shareTitle = res.data.data.albumName; // 主标题
+                        // console.log(res);
+                        // let strsub =  res.data.data.total + '个项目：' + res.data.data.projectNames.join(",")
+                        let strsub = '人工智能来助阵，管理项目更轻松，第一路演全新上线'; // 副标题
+                        $(".shareDesc").text(strsub); // 副标题
+                        $(".shareTitle").text(shareTitle); // 标题
                     }
                 })
             },
