@@ -252,8 +252,8 @@
                     if(res.data.status == 1){
                         let shareTitle = res.data.data.albumName; // 主标题
                         // console.log(res);
-                        // let strsub =  res.data.data.total + '个项目：' + res.data.data.projectNames.join(",")
-                        let strsub = '人工智能来助阵，管理项目更轻松，第一路演全新上线'; // 副标题
+                        let strsub =  res.data.data.total + '个项目：' + res.data.data.projectNames.join(",")
+                        // let strsub = '人工智能来助阵，管理项目更轻松，第一路演全新上线'; // 副标题
                         $(".shareDesc").text(strsub); // 副标题
                         $(".shareTitle").text(shareTitle); // 标题
                     }
