@@ -425,7 +425,6 @@
             gotoProjectDetail(data){ // 调用原声方法
                 // console.log({body:data});
                 let projectCode = data.projectCode;
-                console.log(projectCode);
                 if(window.webkit){
                     if(window.webkit.messageHandlers.goProDetail){
                         window.webkit.messageHandlers.goProDetail.postMessage({body: projectCode});

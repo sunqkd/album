@@ -216,7 +216,11 @@
                 let projectCode = data.projectCode;
                 // console.log(projectCode);
                 if(window.webkit){
-                    window.webkit.messageHandlers.goIntProDetail.postMessage({body: projectCode});
+                    if(window.webkit.messageHandlers.goIntProDetail){
+                        window.webkit.messageHandlers.goIntProDetail.postMessage({body: projectCode});
+                    }else{
+                        window.location.href = 'https://m.dyly.com/'
+                    }
                 }else if(window.goIntProDetail){
                     window.goIntProDetail.sendermsg(projectCode);
                 }else{

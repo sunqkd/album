@@ -147,7 +147,11 @@
                 let companyId = data.companyId;
                 // console.log(companyId);
                 if(window.webkit){
-                    window.webkit.messageHandlers.orgDetail.postMessage({body: companyId});
+                    if(window.webkit.messageHandlers.orgDetail){
+                        window.webkit.messageHandlers.orgDetail.postMessage({body: companyId});
+                    }else{
+                        window.location.href = 'https://m.dyly.com/'
+                    }
                 }else if(window.orgDetail){
                     window.orgDetail.sendermsg(companyId);
                 }else{

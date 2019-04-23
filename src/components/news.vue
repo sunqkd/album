@@ -133,7 +133,11 @@
                 let newId = data.newId;
                 // console.log(newId);
                 if (window.webkit) {
-                    window.webkit.messageHandlers.newsDetail.postMessage({ body: newId });
+                    if(window.webkit.messageHandlers.newsDetail){
+                        window.webkit.messageHandlers.newsDetail.postMessage({ body: newId });
+                    }else{
+                        window.location.href = 'https://m.dyly.com/'
+                    }
                 }else if(window.newsDetail){
                     window.newsDetail.sendermsg(newId);
                 }else{
