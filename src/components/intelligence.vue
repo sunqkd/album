@@ -233,11 +233,9 @@
                 await this.axios.post(url).then((res) => {
                     if (res.data.status == 1) {
                         this.labels = res.data.data.labels;
+                        this.labels.unshift({labelCode:'',labelName:'全部'});
                         this.cities = res.data.data.cities;
-                        if(this.labels[0]){
-                            this.selectLabel.push(this.labels[0].labelCode);
-                        }
-                        // 默认第一个选中
+                        this.selectLabel.push(this.labels[0].labelCode);
                         this.loading = false;
                     }else{
                         this.loading = false;
@@ -247,10 +245,14 @@
             selectLabelFun(data, index) { // 选择标签
                 this.nodata = false;
                 if (index == 0) { // 选择标签
-                    if (this.selectLabel.indexOf(data.labelCode) != -1) {
-                        this.selectLabel.splice(this.selectLabel.indexOf(data.labelCode), 1);
-                    } else {
-                        this.selectLabel.push(data.labelCode);
+                    if(data.labelCode == ""){ // 点击全选
+                        this.selectLabel = [];
+                    }else{ // 非全选
+                        if (this.selectLabel.indexOf(data.labelCode) != -1) {
+                            this.selectLabel.splice(this.selectLabel.indexOf(data.labelCode), 1);
+                        } else {
+                            this.selectLabel.push(data.labelCode);
+                        }
                     }
                 } else { // 选择城市
                     if (this.selectCity.indexOf(data.cityCode) != -1) {
@@ -260,16 +262,17 @@
                     }
                 }
 
-                if(this.selectLabel.length == 0){
-                    this.tips = true;
-                    this.text = "必须选择一个智能标签";
-                    this.intelligenceData = [];
-                }else{
-                    this.query.pageNum = 1;
-                    this.intelligenceData = [];
-                    this.getProjectByLabel();
+                if(this.selectLabel.length == 0){ // 空则全选
+                    this.selectLabel.push("");
+                }else if(this.selectLabel.length > 1) {
+                    this.selectLabel =  this.selectLabel.filter((item)=>{
+                        return item.length > 2;
+                    })
                 }
 
+                this.query.pageNum = 1;
+                this.intelligenceData = [];
+                this.getProjectByLabel();
             },
             getProjectByLabel() { // 通过标签选城市
                 this.loading = true;
@@ -293,7 +296,7 @@
                         
                     }
                 })
-            }
+            },
         },
         destroyed(){
             clearInterval(this.timer)
