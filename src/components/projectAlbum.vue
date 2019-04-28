@@ -170,6 +170,9 @@ export default {
         touvemove(e){
             e.preventDefault()
         }
+    },
+    destroyed(){
+        ModalHelper.beforeClose();
     }
 }
 </script>
