@@ -77,6 +77,7 @@ export default {
         console.log(this.projectCodesData);
         this.getMyAlbumListPage();
         this.getMyFlowListPage();
+        ModalHelper.afterOpen();
     },
     mounted(){
 
@@ -165,6 +166,9 @@ export default {
         closeMaskDIV(){ // 点击阴影
             console.log("点击阴影");
             this.$emit("closeMaskdiv");
+        },
+        touvemove(e){
+            e.preventDefault()
         }
     }
 }
