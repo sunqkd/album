@@ -672,9 +672,8 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 }
 .workFlowContain{
     width:100%;
-    height:350px;
+    height:100%;
     overflow: scroll;
-    padding-bottom:50px;
 }
 .workFlowBottom{
     width: 100%;
