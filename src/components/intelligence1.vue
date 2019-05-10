@@ -153,7 +153,7 @@
                     }).then((res) => {
                         if (res.data.status == 1) {
                             this.nodata = true;
-                            this.intelligenceData = res.data.data.list;
+                            this.intelligenceData = res.data.data.list?res.data.data.list:[];
                             if (this.intelligenceData.length == 0) {
                                 this.noDataFlag = true
                             } else {
@@ -280,7 +280,7 @@
                 }).then((res) => {
                     if (res.data.status == 1) {
                         this.nodata = true;
-                        this.intelligenceData = res.data.data.list;
+                        this.intelligenceData = res.data.data.list?res.data.data.list:[];
                         if (this.intelligenceData.length == 0) {
                             this.noDataFlag = true
                         } else {
