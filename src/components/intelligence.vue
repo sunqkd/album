@@ -219,12 +219,12 @@
                     if(window.webkit.messageHandlers.goIntProDetail){
                         window.webkit.messageHandlers.goIntProDetail.postMessage({body: projectCode});
                     }else{
-                        window.location.href = 'https://m.dyly.com/'
+                        window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
                     }
                 }else if(window.goIntProDetail){
                     window.goIntProDetail.sendermsg(projectCode);
                 }else{
-                    window.location.href = 'https://m.dyly.com/'
+                    window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
                 }
             },
             async getAlbumLabel() { // 获取标签和城市

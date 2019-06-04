@@ -429,12 +429,12 @@
                     if(window.webkit.messageHandlers.goProDetail){
                         window.webkit.messageHandlers.goProDetail.postMessage({body: projectCode});
                     }else{
-                        window.location.href = 'https://m.dyly.com/'
+                        window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
                     }
                 }else if(window.goProDetail){
                     window.goProDetail.sendermsg(projectCode);
                 }else{
-                    window.location.href = 'https://m.dyly.com/'
+                    window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
                 }
             },
         },
