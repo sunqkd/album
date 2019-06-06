@@ -155,7 +155,15 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     justify-content: center;
     border-radius: 8px;
     border:1px solid rgba(240,240,240,1);
-    overflow: hidden;
+    /* overflow: hidden; */
+    position:relative;
+}
+.projectImgContain .voiceTips{
+    position:absolute;
+    right: -8px;
+    top:-8px;
+    width:18px;
+    height: 18px;
 }
 .projectImgContain img{
     width:100%;
@@ -178,17 +186,25 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 }
 .projectOneLine{
     width:100%;
+    height:20px;
     position:relative;
+    display:flex;
+    align-items: center;
+    margin-bottom:4px;
 }
 .projectName{
     font-size: 0;
     height: 20px;
 }
 .projectName .projectName-name{
+    display:inline-block;
     font-size:16px;
+    max-width:180px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
     font-weight:bold;
     color:rgba(78,88,92,1);
-    line-height:20px;
     font-family:PingFangSC-Medium;
 }
 .projectName .stockCode{
@@ -205,18 +221,53 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     margin-right:1px;
 }
 .projectCityName{
-    font-weight:400;
+    height:20px;
+    margin-top:5px;
     font-size:12px;
     color:rgba(155,170,176,1);
-    line-height:16px;
+    margin-left:6px;
+}
+.projectOneLine .threeTips{
+    margin-left:6px;
+    font-size: 0;
+    height:20px;
+    display:flex;
+    align-items: flex-end;
 }
 .financing{
-    display:block;
-    padding:3px 6px;
-    background:rgba(255,79,76,0.16);
-    border-radius:8px;
+    width:16px;
+    height:16px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background:rgba(255,79,76,0.1);
+    border-radius:4px;
     font-size: 10px;
-    color:rgba(255,79,76,1);
+    color:#FF4F4C;
+    margin-right: 2px;
+}
+.haveChat{
+    width:16px;
+    height:16px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background:rgba(35,119,245,0.1);
+    border-radius:4px;
+    font-size: 10px;
+    color:#2377F5;
+    margin-right: 2px;
+}
+.haveBp{
+    width:20px;
+    height:16px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background:rgba(49,0,255,0.1);
+    border-radius:4px;
+    font-size: 10px;
+    color:#8C70FF;
 }
 .checkContain{
     position:absolute;
