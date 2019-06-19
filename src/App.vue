@@ -217,7 +217,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     margin:0 6px;
     line-height:11px;
     float: right;
-    margin-top: 2px;
+    margin-top: 4px;
     margin-right:1px;
 }
 .projectCityName{
@@ -268,6 +268,18 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     border-radius:4px;
     font-size: 10px;
     color:#8C70FF;
+    margin-right: 2px;
+}
+.haveSpeech{
+    width:32px;
+    height:16px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background:rgba(35,119,245,.1);
+    border-radius:4px;
+    font-size: 10px;
+    color:#2377f5;
 }
 .checkContain{
     position:absolute;

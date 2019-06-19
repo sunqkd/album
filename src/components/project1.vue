@@ -10,7 +10,7 @@
                         <div class="projectImgContain">
                             <img :src="item.logo" alt v-if="item.logo">
                             <div v-if="!item.logo">{{item.name.substring(0,1)}}</div>
-                            <img src="./img/projectlist_voice.png" alt="" class="voiceTips" v-if="item.speechNum">
+                            <img src="./img/projectlist_voice.png" alt="" class="voiceTips" v-if="item.speechNum" style="display:none">
                         </div>
                     </div>
                     <div class="projectRight">
@@ -19,12 +19,13 @@
                                 <span class="projectName-name">{{item.name}}</span>
                                 <span v-if="item.stockCode" class="stockCode">{{item.stockCode}}</span>
                             </div>
-                            <div class="projectCityName" v-if="item.cityName">{{item.cityName?item.cityName:''}}</div>
                             <div class="threeTips">
                                 <span class="financing" v-if="item.financingNeed && item.financingNeed !== 0">融</span>
                                 <span class="haveChat" v-if="item.contactNum">聊</span>
                                 <span class="haveBp" v-if="item.bpNum">BP</span>
+                                <span class="haveSpeech" v-if="item.speechNum">音频</span>
                             </div>
+                            <div class="projectCityName" v-if="item.cityName">{{item.cityName?item.cityName:''}}</div>
                             <div class="checkContain" v-if="manageProjectFlag" @click.stop="selecttext()">
                                 <input type="checkbox" id="finacingInput" v-model="item.projectChecked"
                                     @change="changeInput()">
