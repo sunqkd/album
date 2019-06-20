@@ -186,7 +186,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 }
 .projectOneLine{
     width:100%;
-    height:20px;
+    height:21px;
     position:relative;
     display:flex;
     align-items: center;
@@ -195,6 +195,9 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 .projectName{
     font-size: 0;
     height: 20px;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
 }
 .projectName .projectName-name{
     display:inline-block;
@@ -213,16 +216,9 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     padding:2px 6px;
     font-size:11px;
     color:rgba(182,153,106,1);
-    font-weight:normal;
-    margin:0 6px;
-    line-height:11px;
-    float: right;
-    margin-top: 4px;
-    margin-right:1px;
+    margin-left: 5px;
 }
 .projectCityName{
-    height:20px;
-    margin-top:5px;
     font-size:12px;
     color:rgba(155,170,176,1);
     margin-left:6px;
@@ -230,7 +226,6 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 .projectOneLine .threeTips{
     margin-left:6px;
     font-size: 0;
-    height:20px;
     display:flex;
     align-items: flex-end;
 }
