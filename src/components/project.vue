@@ -78,9 +78,9 @@
                 <button @click="copyToMyalbum()" :disabled="this.buttonClick" :class="this.buttonClick?'noClick':''">{{this.copyText}}</button>
                 <button class="collectButton" @click="operateMyCollection()">
                     <img v-if="this.collectflag == false" src="./img/notadd.png">
-                    <span v-if="this.collectflag == false">订阅</span>
+                    <span v-if="this.collectflag == false">关注</span>
                     <img v-if="this.collectflag == true" src="./img/yesadd.png">
-                    <span v-if="this.collectflag == true">已订阅</span>
+                    <span v-if="this.collectflag == true">已关注</span>
                 </button>
             </div>
             <!-- 用户登录用户创建 删除项目 -->
