@@ -373,16 +373,29 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     height:100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 .nouserSelf button{
     border:none;
     outline: none;
-    width:295px;
+    width:40%;
     height:36px;
     background:linear-gradient(127deg,rgba(210,184,140,1) 0%,rgba(178,150,105,1) 100%);
     border-radius:18px;
     color:#ffffff;
+}
+.nouserSelf .collectButton {
+    background:none;
+    border:1px solid rgba(210,184,140,1);
+    color:rgba(210,184,140,1);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.nouserSelf .collectButton img{
+    width:20px;
+    height:20px;
+    margin-right:8px;
 }
 .projectOperation{
     width:100%;

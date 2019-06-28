@@ -76,6 +76,12 @@
             <!-- 用户登录 非用户创建 -->
             <div class="nouserSelf" v-if="login == 2">
                 <button @click="copyToMyalbum()" :disabled="this.buttonClick" :class="this.buttonClick?'noClick':''">{{this.copyText}}</button>
+                <button class="collectButton" @click="operateMyCollection()">
+                    <img v-if="this.collectflag == false" src="./img/notadd.png">
+                    <span v-if="this.collectflag == false">订阅</span>
+                    <img v-if="this.collectflag == true" src="./img/yesadd.png">
+                    <span v-if="this.collectflag == true">已订阅</span>
+                </button>
             </div>
             <!-- 用户登录用户创建 删除项目 -->
             <div class="projectOperation" v-if="login == 3">
@@ -146,6 +152,7 @@
                 text:'删除成功',
                 nodata:false,
                 noDataText:'',
+                collectflag:false, // false 表示未收藏 true表示已经收藏
             }
         },
         beforeRouteUpdate(to,from,next){
@@ -176,11 +183,13 @@
             }else if(this.createdById != this.userId && this.token.length > 10){ // 已登录不是自己创建
                 console.log("已经登录不是自己创建");
                 this.login = 2;
+                this.hasCollected(); // 判断是否被收藏
             }else{
                 console.log("未登录")
                 this.login = 5;
             }
             this.getAlbumProjects();
+            
         },
         mounted(){
             let that = this;
@@ -440,6 +449,44 @@
                     window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
                 }
             },
+            hasCollected(){ // 判断专辑是否被收藏
+                this.axios.post('/vc/albumFlow/hasCollected',{},{
+                    params:{
+                        "albumId": this.albumId
+                    }
+                }).then((res)=>{
+                    if(res.data.status == 1){ // 
+                        // 0为收藏 1 收藏
+                        if(res.data.data == 0){
+                            this.collectflag = false;
+                        }else{
+                            this.collectflag = true;
+                        }
+                    }else{
+
+                    }
+                })
+            },
+            operateMyCollection(){ // 收藏 或 未收藏
+                let operateType = '';
+                if(this.collectflag == true){
+                    operateType = 2; // 取消收藏
+                }else{
+                    operateType = 1; // 添加收藏
+                }
+                this.axios.post('/vc/albumFlow/operateMyCollection',{},{
+                    params:{
+                        albumId:this.albumId,
+                        operateType:operateType
+                    }
+                }).then((res)=>{
+                    if(res.data.status == 1){
+                        this.hasCollected();
+                    }else{
+                        alert('操作异常')
+                    }
+                })
+            }
         },
         destroyed(){
             clearInterval(this.timer)
