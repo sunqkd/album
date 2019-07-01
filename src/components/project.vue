@@ -76,7 +76,7 @@
             <!-- 用户登录 非用户创建 -->
             <div class="nouserSelf" v-if="login == 2">
                 <button @click="copyToMyalbum()" :disabled="this.buttonClick" :class="this.buttonClick?'noClick':''">{{this.copyText}}</button>
-                <button class="collectButton" @click="operateMyCollection()">
+                <button class="collectButton" @click="operateMyCollection()" :class="this.collectflag?'noClick':''">
                     <img v-if="this.collectflag == false" src="./img/notadd.png">
                     <span v-if="this.collectflag == false">关注</span>
                     <img v-if="this.collectflag == true" src="./img/yesadd.png">

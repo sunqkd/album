@@ -386,11 +386,11 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 }
 .nouserSelf .collectButton {
     background:none;
-    border:1px solid rgba(210,184,140,1);
-    color:rgba(210,184,140,1);
     display:flex;
     align-items: center;
     justify-content: center;
+    background:linear-gradient(127deg,rgba(210,184,140,1) 0%,rgba(178,150,105,1) 100%);
+    color:#ffffff;
 }
 .nouserSelf .collectButton img{
     width:20px;
