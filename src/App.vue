@@ -341,13 +341,15 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 }
 .bottom-footer{
     position:fixed;
-    left:0;
+    /* left:0; */
     bottom:0;
     width:100%;
     height:49px;
     background: #ffffff;
     z-index: 10;
     box-sizing: border-box;
+    max-width: 750px;
+    margin:0 auto;
 }
 .userSelf{
     width:100%;
