@@ -16,7 +16,8 @@ a{text-decoration:none;}
 ul,li{ padding:0;margin:0;list-style:none}
 html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:PingFangSC-Medium, Microsoft YaHei,PingFangSC-Light, sans-serif;height: 100%}
 #app{
-    width:100%;
+    max-width: 750px;
+    margin:0 auto;
     height:100%;
     background:#f4f6f6;
 }
