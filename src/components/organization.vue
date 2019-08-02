@@ -150,12 +150,12 @@
                     if(window.webkit.messageHandlers.orgDetail){
                         window.webkit.messageHandlers.orgDetail.postMessage({body: companyId});
                     }else{
-                        window.location.href = 'https://m.dyly.com/'
+                        window.location.href = 'https://m.dyly.com/register/app_h5/org_share.html?companyId='+data.companyId
                     }
                 }else if(window.orgDetail){
                     window.orgDetail.sendermsg(companyId);
                 }else{
-                    window.location.href = 'https://m.dyly.com/'
+                    window.location.href = 'https://m.dyly.com/register/app_h5/org_share.html?companyId='+data.companyId
                 }
             },
         },
