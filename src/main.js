@@ -5,11 +5,15 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import VueScroller from 'vue-scroller'
+import { get, post } from './http/http'
 Vue.use(VueScroller)
 Vue.config.productionTip = false;
 axios.defaults.withCredentials = true;
 
+Vue.prototype.GET = get;
+Vue.prototype.POST = post;
 Vue.prototype.axios = axios;
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
