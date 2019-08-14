@@ -26,7 +26,7 @@ axios.interceptors.response.use((data) => {
         //     data.data.data=Decrypt(data.data.data)
         // }
         if(!(/(localhost|test1)/gi.test(window.location.href))){
-            data.data.data=Decrypt(data.data.data)
+            data.data.data&&(data.data.data=Decrypt(data.data.data))
         }
     }else{
         Message.error({ message: msg , showClose: true });
