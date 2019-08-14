@@ -381,7 +381,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 .nouserSelf button{
     border:none;
     outline: none;
-    width:40%;
+    width:70%;
     height:36px;
     background:linear-gradient(127deg,rgba(210,184,140,1) 0%,rgba(178,150,105,1) 100%);
     border-radius:18px;
