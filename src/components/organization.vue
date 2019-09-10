@@ -1,5 +1,5 @@
 <template id="organization">
-    <div class="orgContain">
+    <div class="orgContain" @touchmove="this.touchmoveFun">
         <scroller  :on-refresh="refresh" :on-infinite="infinite" refresh-layer-color="#4b8bf4"
             loading-layer-color="#ec4949" ref="my_scrolleror" :noDataText="noDataText">
             <!-- 上啦动画 -->
@@ -55,20 +55,19 @@
             this.getAlbumCompany();
         },
         mounted(){
-            let that = this;
-            function fn(){
-                let {left, top} = that.$refs.my_scrolleror.getPosition()
-                that.x = left
-                that.y = top
-                if(that.y > 200){
+            
+        },
+        methods:{
+            touchmoveFun(){
+                let {left, top} = this.$refs.my_scrolleror.getPosition()
+                this.x = left
+                this.y = top
+                if(this.y > 200){
                     document.getElementById("titleContain").style.display = 'none'
                 }else{
                     document.getElementById("titleContain").style.display = 'block';
                 }
-            }
-            that.timer = setInterval(fn, 10)
-        },
-        methods:{
+            },
             refresh(done){ // 下拉刷新
                 this.query.pageNum = 1;
                 setTimeout(() => {
