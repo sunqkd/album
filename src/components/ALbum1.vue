@@ -52,7 +52,9 @@
             </router-link>
         </div>
         <div v-if="this.createdById" style="width:100%;height:90%;position:relative;background:#f4f6f6">
-            <router-view :createdById="this.createdById" @refFather="getAlbumById"></router-view>
+            <keep-alive>
+                <router-view :createdById="this.createdById" @refFather="getAlbumById"></router-view>
+            </keep-alive>
         </div>
         <alertInfo v-if="tips" :text="text" @closeTip="closeTip"></alertInfo>
     </div>

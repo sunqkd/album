@@ -1,5 +1,5 @@
 <template id="project">
-    <div class="projectContain" style="height:100%;">
+    <div class="projectContain" style="height:100%;" @touchmove="this.touchmoveFun">
         <scroller  :on-refresh="refresh" :on-infinite="infinite" refresh-layer-color="#4b8bf4"
             loading-layer-color="#ec4949" :noDataText="noDataText" ref="project1Scroll">
             <!-- 上啦动画 -->
@@ -175,20 +175,19 @@
             this.getAlbumProjects();
         },
         mounted(){
-            let that = this;
-            function fn(){
-                let {left, top} = that.$refs.project1Scroll.getPosition()
-                that.x = left
-                that.y = top
-                if(that.y > 200){
+            
+        },
+        methods: {
+            touchmoveFun(){
+                let {left, top} = this.$refs.project1Scroll.getPosition()
+                this.x = left
+                this.y = top
+                if(this.y > 200){
                     document.getElementById("titleContain").style.display = 'none'
                 }else{
                     document.getElementById("titleContain").style.display = 'block';
                 }
-            }
-            that.timer = setInterval(fn, 10)
-        },
-        methods: {
+            },
             refresh(done){ // 下拉刷新
                 this.queryInfo.pageNum = 1;
                 setTimeout(() => {
