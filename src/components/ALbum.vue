@@ -136,7 +136,7 @@
                     params[a[0]] = decodeURIComponent(a[1]);                      
                 }                               
                 this.query = params;
-                this.clearCookie("rememberMatch");
+                // this.clearCookie("rememberMatch");
                 if(this.query.token && this.query.token.length > 10){ // 用户已经登录
                     console.log("用户已经登录");
                     let cname = this.query.token.split("=")[0];
