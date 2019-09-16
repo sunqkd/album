@@ -208,23 +208,37 @@
                 let url = '/vc/albumFlow/queryAlbumById?albumId='+ this.query.albumId;
                 await this.axios.post(url).then((res)=>{
                     if(res.data.status == 1){
-                        this.albumTitle = res.data.data.albumTitle; // 标题
-                        this.customerImage =  res.data.data.customerImage?res.data.data.customerImage:'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'; // 创建者头像
-                        this.createdBy =  res.data.data.createdBy; // 创建人
-                        this.projectNum = res.data.data.projectNum; // 项目数量
-                        this.companyNum = res.data.data.companyNum; // 机构数量
-                        this.newsNum = res.data.data.newsNum; // 新闻数量
-                        this.albumType = res.data.data.albumType; // 是否私密
-                        if(res.data.data.userId == this.query.userId && this.query.token.length > 10){ // 本人创建 并且登录 可以编辑
-                            this.editorImg = true;
-                            this.createSelfFlag = false;
+
+
+                        if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))){
+                           
+                            console.log('是手机');
+                            this.albumTitle = res.data.data.albumTitle; // 标题
+                            this.customerImage =  res.data.data.customerImage?res.data.data.customerImage:'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'; // 创建者头像
+                            this.createdBy =  res.data.data.createdBy; // 创建人
+                            this.projectNum = res.data.data.projectNum; // 项目数量
+                            this.companyNum = res.data.data.companyNum; // 机构数量
+                            this.newsNum = res.data.data.newsNum; // 新闻数量
+                            this.albumType = res.data.data.albumType; // 是否私密
+                            if(res.data.data.userId == this.query.userId && this.query.token.length > 10){ // 本人创建 并且登录 可以编辑
+                                this.editorImg = true;
+                                this.createSelfFlag = false;
+                            }else{
+                                this.editorImg = false;
+                                this.createSelfFlag = true;
+                            }
+                            this.createdById = res.data.data.userId; // 专辑创建人Id
+
                         }else{
-                            this.editorImg = false;
-                            this.createSelfFlag = true;
+                            window.location = 'https://www.dyly.com/#/project/album/detail?albumId='+ res.data.data.albumId+'&albumTitle='+ res.data.data.albumTitle +'&userId='+res.data.data.userId;
                         }
-                        this.createdById = res.data.data.userId; // 专辑创建人Id
+
+                        
                     }
                 })
+
+
+
                
             },
             updateMyAlbum(albumTitle){ // 修改标题
