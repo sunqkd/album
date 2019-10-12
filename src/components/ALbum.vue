@@ -272,6 +272,9 @@
                         // let strsub = '人工智能来助阵，管理项目更轻松，第一路演全新上线'; // 副标题
                         $(".shareDesc").text(strsub); // 副标题
                         $(".shareTitle").text(shareTitle); // 标题
+
+                        document.querySelector('meta[property="og:title"]').setAttribute('content',shareTitle);
+                        document.querySelector('meta[property="description"]').setAttribute('content',strsub);
                     }
                 })
             },
