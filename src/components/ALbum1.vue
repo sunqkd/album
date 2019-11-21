@@ -31,7 +31,7 @@
                 <span class="navCount">{{this.projectNum}}</span>
             </router-link>
             <router-link :to="{path:'/collect/intelligence1',query:this.query}" @click.native="clearScroll(1)">
-                <span class="navName">智能推荐</span>
+                <span class="navName">相似推荐</span>
                 <span class="navCount"></span>
             </router-link>
             <router-link :to="{path:'/collect/organization1',query:this.query}" @click.native="clearScroll(2)">
@@ -42,14 +42,14 @@
                 <span class="navName">新闻</span>
                 <span class="navCount">{{this.newsNum}}</span>
             </router-link>
-            <router-link :to="{path:'/collect/activity1',query:this.query}" @click.native="clearScroll(4)">
+            <!-- <router-link :to="{path:'/collect/activity1',query:this.query}" @click.native="clearScroll(4)">
                 <span class="navName">活动</span>
                 <span class="navCount"></span>
             </router-link>
             <router-link :to="{path:'/collect/report1',query:this.query}" @click.native="clearScroll(5)">
                 <span class="navName">研报</span>
                 <span class="navCount"></span>
-            </router-link>
+            </router-link> -->
         </div>
         <div v-if="this.createdById" style="width:100%;height:90%;position:relative;background:#f4f6f6">
             <keep-alive>

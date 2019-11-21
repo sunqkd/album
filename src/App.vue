@@ -101,6 +101,8 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     justify-content: center;
     font-weight:400;
     color:rgba(78,88,92,1);
+    width:25%;
+    box-sizing: border-box;
 }
 .navName{
     font-size: 14px;
@@ -203,7 +205,7 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 .projectName .projectName-name{
     display:inline-block;
     font-size:16px;
-    max-width:180px;
+    max-width:150px;
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;

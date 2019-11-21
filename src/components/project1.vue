@@ -45,6 +45,7 @@
                             {{item.latestViewRoundMoney}}
                         </div>
                         <div class="projectFourLine" @click="goToAndroid()">
+                            <span style="color:rgba(78,88,92,1)" v-if="item.investNames">投资方：</span>
                             <span>{{item.investNames}}</span>
                         </div>
                     </div>

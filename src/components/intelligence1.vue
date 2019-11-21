@@ -1,6 +1,6 @@
 <template id="intelligence">
     <div class="intelligenceContain">
-        <div class="intelligenceBanner" id="intelligenceBanner">
+        <!-- <div class="intelligenceBanner" id="intelligenceBanner">
             <div class="intelligenceLabel">
                 <ul class="LabelUL">
                     <li v-for="(item,index) in labels" :key="index" class="noActiveLabel"
@@ -19,7 +19,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <div style="position:relative;width:100%;height:100%;" @touchmove="this.touchmoveFun">
             <scroller  :on-refresh="refresh" :on-infinite="infinite" refresh-layer-color="#4b8bf4"
                 loading-layer-color="#ec4949" :noDataText="noDataText" ref="my_scrollers">
@@ -68,6 +68,7 @@
                                     {{item.latestViewRoundMoney}}
                                 </div>
                                 <div class="projectFourLine">
+                                    <span style="color:rgba(78,88,92,1)" v-if="item.investNames">投资方：</span>
                                     <span>{{item.investNames}}</span>
                                 </div>
                             </div>
@@ -120,11 +121,11 @@
                 nodata:false, // 
             }
         },
-        async created() {
+        created() {
             this.token = this.$route.query.token; // 登录信息
             this.flowId = this.$route.query.flowId // 专辑ID
             this.userId = this.$route.query.userId // 用户ID
-            await this.getAlbumLabel();
+            // await this.getAlbumLabel();
             this.getProjectByLabel();
         },
         mounted(){
@@ -137,10 +138,10 @@
                 this.y = top
                 if(this.y > 200){
                     document.getElementById("titleContain").style.display = 'none'
-                    document.getElementById('intelligenceBanner').style.display = 'none';
+                    // document.getElementById('intelligenceBanner').style.display = 'none';
                 }else{
                     document.getElementById("titleContain").style.display = 'block';
-                    document.getElementById('intelligenceBanner').style.display = 'block';
+                    // document.getElementById('intelligenceBanner').style.display = 'block';
                 }
             },
             refresh(done){ // 下拉刷新
