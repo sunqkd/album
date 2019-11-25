@@ -15,10 +15,11 @@
             </div>
             <div class="userInfo">
                 <div class="userImg">
-                    <div class="userImgContain" v-if="createSelfFlag">
+                    <!-- <div class="userImgContain" v-if="createSelfFlag">
                         <img :src="this.customerImage" alt="">
-                    </div>
-                    <span v-if="createSelfFlag">{{this.createdBy}}</span>
+                    </div> -->
+                    <span class="ecclipse" v-if="createSelfFlag">{{this.createdBy}}</span>
+                    <span>{{this.updateTime}}</span>
                 </div>
                 <div>
                     {{this.projectNum}}个项目
@@ -75,6 +76,7 @@
                 },
                 customerImage:'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1', // 创建者头像
                 createdBy:'',// 创建人
+                updateTime:'', // 更新时间
                 createdById:'', // 创建人Id
                 editorImg:false, // 本人创建并且登录可以编辑
                 projectNum:0, // 项目数量
@@ -216,6 +218,7 @@
                             this.albumTitle = res.data.data.albumTitle; // 标题
                             this.customerImage =  res.data.data.customerImage?res.data.data.customerImage:'https://img1.dyly.com/o_1d2kk3tqv14f21mlplq71u5q1k2ht.png?imageView2/2/w/300/ignore-error/1'; // 创建者头像
                             this.createdBy =  res.data.data.createdBy; // 创建人
+                            this.updateTime = res.data.data.updateTime; // 更新时间
                             this.projectNum = res.data.data.projectNum; // 项目数量
                             this.companyNum = res.data.data.companyNum; // 机构数量
                             this.newsNum = res.data.data.newsNum; // 新闻数量

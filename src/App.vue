@@ -78,6 +78,15 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
 .userImg{
     display:flex;
     align-items: center;
+    width:80%;
+}
+.userImg .ecclipse{
+    display:inline-block;
+    max-width: 80%;
+    margin-right: 10px;
+    overflow: hidden;/*超出部分隐藏*/
+    white-space: nowrap;/*不换行*/
+    text-overflow:ellipsis;/*超出部分文字以...显示*/
 }
 
 #nav{
