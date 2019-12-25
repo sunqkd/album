@@ -135,12 +135,12 @@
                     if(window.webkit.messageHandlers.newsDetail){
                         window.webkit.messageHandlers.newsDetail.postMessage({ body: newId });
                     }else{
-                        window.location.href = 'https://m.dyly.com/register/app_h5/news_share.html?newsId='+data.newId;
+                        window.location.href = data.sourceUrl;
                     }
                 }else if(window.newsDetail){
                     window.newsDetail.sendermsg(newId);
                 }else{
-                    window.location.href = 'https://m.dyly.com/register/app_h5/news_share.html?newsId='+data.newId;
+                    window.location.href = data.sourceUrl;
                 }
             },
             getNews(){
