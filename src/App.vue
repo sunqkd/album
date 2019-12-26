@@ -339,6 +339,9 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     color:rgba(78,88,92,1);
     line-height:16px;
     font-family:PingFangSC-Regular;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .projectFourLine{
     font-size: 12px;

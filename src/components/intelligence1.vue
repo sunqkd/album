@@ -60,12 +60,14 @@
                                     {{item.digest}}
                                 </div>
                                 <div class="projectThreeLine">
-                                    {{item.latestInvDate}}
-                                    <i v-if="item.latestInvDate && item.latestRound">·</i>
-                                    {{item.latestRound}}
-                                    <i
-                                        v-if="(item.latestInvDate && item.latestViewRoundMoney) || (item.latestRound && item.latestViewRoundMoney)">·</i>
-                                    {{item.latestViewRoundMoney}}
+                                    <span>
+                                        {{item.latestRound}}
+                                        <i v-if="item.latestRound && item.latestViewRoundMoney">·</i>
+                                        {{item.latestViewRoundMoney}} 
+                                    </span>
+                                    <span>
+                                        {{item.latestInvDate}}
+                                    </span>
                                 </div>
                                 <div class="projectFourLine">
                                     <span style="color:rgba(78,88,92,1)" v-if="item.investNames">投资方：</span>
