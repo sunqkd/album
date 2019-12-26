@@ -27,7 +27,7 @@
                     <ul class="projectDataContain" id="asdasd">
                         <li v-for="(item,index) in intelligenceData" :key="index" style="" @click="goProDetail(item)">
                             <div class="projectLeft">
-                                <div class="projectImgContain">
+                                <div class="projectImgContain" :class="item.name=='VIP用户可见'?'Gaussian':''">
                                     <img :src="item.logo" alt="" v-if="item.logo">
                                     <div v-if="!item.logo">
                                         {{item.name.substring(0,1)}}

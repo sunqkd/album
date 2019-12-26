@@ -7,7 +7,7 @@
             <ul class="projectDataContain">
                 <li v-for="(item,index) in projectDataList" :key="index" @click="gotoProjectDetail(item)">
                     <div class="projectLeft">
-                        <div class="projectImgContain">
+                        <div class="projectImgContain" :class="item.name=='VIP用户可见'?'Gaussian':''">
                             <img :src="item.logo" alt="" v-if="item.logo">
                             <div v-if="!item.logo">
                                 {{item.name.substring(0,1)}}
@@ -426,7 +426,7 @@
             manageMyAlbum(){ // 管理整个专辑
                 this.$router.push({path:'/project',query:{userId:this.userId,token:this.token,albumId:this.newalbumid}})
                 this.copylogin = false;
-                console.log(window.location.href)
+                // console.log(window.location.href)
                 if(window.webkit){
                     window.location.reload();
                     window.webkit.messageHandlers.refreshHtml({body:window.location.href})
@@ -438,17 +438,28 @@
             gotoProjectDetail(data){ // 调用原声方法
                 // console.log({body:data});
                 let projectCode = data.projectCode;
-                if(window.webkit){
+                if(window.webkit){ // 苹果手机
                     if(window.webkit.messageHandlers.goProDetail){
                         window.webkit.messageHandlers.goProDetail.postMessage({body: projectCode});
                     }else{
-                        window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
+                       window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
                     }
-                }else if(window.goProDetail){
+                }else if(window.goProDetail){ // 安卓
                     window.goProDetail.sendermsg(projectCode);
-                }else{
+                }else{ // 其他
                     window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
                 }
+            },
+            Pagejudgment(projectCode){ // 会员判断
+                this.axios.get('/vc/project/detail',{
+                    params:{
+                        projectId:projectCode
+                    }
+                }).then((res)=>{
+                    if(res.data.status == 1){
+                        window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
+                    }
+                })
             },
             hasCollected(){ // 判断专辑是否被收藏
                 this.axios.post('/vc/albumFlow/hasCollected',{},{

@@ -170,6 +170,9 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     /* overflow: hidden; */
     position:relative;
 }
+.Gaussian{
+    filter: blur(5px);
+}
 .projectImgContain .voiceTips{
     position:absolute;
     right: -8px;
