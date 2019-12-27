@@ -119,9 +119,9 @@
         methods: {
             getShareUrl(){ // 分享
                 // 测试
-                let url = 'https://test1.dyly.com/album/index.html#/project?userId='+ this.query.userId+ '&token='+ '&albumId=' + this.query.albumId;
+                // let url = 'https://test1.dyly.com/album/index.html#/project?userId='+ this.query.userId+ '&token='+ '&albumId=' + this.query.albumId;
                 // 线上
-                // let url = 'https://www.dyly.com/album/index.html#/project?userId='+ this.query.userId+ '&token='+ '&albumId=' + this.query.albumId;
+                let url = 'https://www.dyly.com/album/index.html#/project?userId='+ this.query.userId+ '&token='+ '&albumId=' + this.query.albumId;
                 // console.log(url);
                 document.querySelector('meta[property="og:url"]').setAttribute('content',url);
                 // console.log(document.querySelector('meta[property="og:url"]').getAttribute('content')) 
