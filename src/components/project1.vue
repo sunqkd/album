@@ -48,6 +48,10 @@
                             <span style="color:rgba(78,88,92,1)" v-if="item.investNames">投资方：</span>
                             <span>{{item.investNames}}</span>
                         </div>
+                        <div class="projectFiveLine" v-if="item.roadShowAlbumName">
+                            <img src="./img/roadshow.png" alt="">
+                            <span>来自：{{item.roadShowAlbumName}}</span>
+                        </div>
                     </div>
                 </li>
             </ul>
