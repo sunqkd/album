@@ -53,6 +53,10 @@
                             <span style="color:rgba(78,88,92,1)" v-if="item.investNames">投资方：</span>
                             <span>{{item.investNames?item.investNames:''}}</span>
                         </div>
+                        <div class="projectFiveLine" v-if="item.roadShowAlbumName">
+                            <img src="./img/roadshow.png" alt="">
+                            <span>来自：{{item.roadShowAlbumName}}</span>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -172,31 +176,40 @@
             },
             projectNum:{
 
+            },
+            category:{
+
             }
         },
         created(){
             this.token = this.$route.query.token; // 登录信息
             this.albumId = this.$route.query.albumId // 专辑ID
             this.userId =  this.$route.query.userId // 用户ID
-           
-            if(this.createdById == this.userId && this.token.length > 10){ // 自己创建 并且已经登录
-                console.log("自己创建并且已经登录")
-                this.login = 1;
-            }else if(this.createdById != this.userId && this.token.length > 10){ // 已登录不是自己创建
-                console.log("已经登录不是自己创建");
-                this.login = 2;
-                this.hasCollected(); // 判断是否被收藏
-            }else{
-                console.log("未登录")
-                this.login = 5;
-            }
-            this.getAlbumProjects();
             
+            this.judgecategory(); // 判断专辑的类型
+            this.getAlbumProjects();
         },
         mounted(){
             
         },
         methods:{
+            judgecategory(){ // 判断专辑类型
+                if(this.category == 1){ // 路演专辑
+                    this.login = 5; // 不显示复制按钮
+                }else{ // 普通专辑
+                    if(this.createdById == this.userId && this.token.length > 10){ // 自己创建 并且已经登录
+                        console.log("自己创建并且已经登录")
+                        this.login = 1;
+                    }else if(this.createdById != this.userId && this.token.length > 10){ // 已登录不是自己创建
+                        console.log("已经登录不是自己创建");
+                        this.login = 2;
+                        this.hasCollected(); // 判断是否被收藏
+                    }else{
+                        console.log("未登录")
+                        this.login = 5;
+                    }
+                }
+            },
             touchmoveFun(){
                 let {left, top} = this.$refs.projectScroll.getPosition()
                 this.x = left

@@ -356,6 +356,28 @@ html,body{width:100%;background:rgba(255,255,255,1);font-size: 16px;font-family:
     text-overflow:ellipsis;
     font-family:PingFangSC-Regular;
 }
+.projectFiveLine{
+    width:100%;
+    height:20px;
+    background:rgba(244,246,246,1);
+    color:#999999;
+    margin-top:6px;
+    font-size: 12px;
+    display:flex;
+    align-items: center;
+
+}
+.projectFiveLine img{
+    width:16px;
+    height:16px;
+    margin-right:6px;
+}
+.projectFiveLine span{
+    display:inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
 .bottom-footer{
     position:fixed;
     /* left:0; */

@@ -4,8 +4,8 @@
 
 const path = require('path')
 
-// const domain='https://test1.dyly.com'
-const domain='http://10.10.5.230:8080'
+const domain='https://test1.dyly.com'
+// const domain='http://10.10.5.230:8080'
 module.exports = {
   dev: {
 

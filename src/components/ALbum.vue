@@ -54,7 +54,7 @@
         </div>
         <div v-if="this.createdById" style="width:100%;height:90%;position:relative;background:#f4f6f6">
             <keep-alive>
-                <router-view :createdById="this.createdById" @refFather="getAlbumById" :albumTitle="this.albumTitle" :projectNum="this.projectNum"></router-view>
+                <router-view :category="this.category" :createdById="this.createdById" @refFather="getAlbumById" :albumTitle="this.albumTitle" :projectNum="this.projectNum"></router-view>
             </keep-alive>
         </div>
         <alertInfo v-if="tips" :text="text" @closeTip="closeTip"></alertInfo>
@@ -65,6 +65,7 @@
     export default {
         data() {
             return {
+                category:'', // 专辑类型
                 albumTitle: '', // 专辑标题
                 editorflag: false, // 编辑框显示是否显示
                 positionTop: 0, // 高度
@@ -231,6 +232,7 @@
                                 this.createSelfFlag = true;
                             }
                             this.createdById = res.data.data.userId; // 专辑创建人Id
+                            this.category = res.data.data.category; // 专辑类型判断
 
                         }else{
                             window.location = 'https://www.dyly.com/#/project/album/detail?albumId='+ res.data.data.albumId+'&albumTitle='+ res.data.data.albumTitle +'&userId='+res.data.data.userId;
