@@ -455,24 +455,21 @@
                     if(window.webkit.messageHandlers.goProDetail){
                         window.webkit.messageHandlers.goProDetail.postMessage({body: projectCode});
                     }else{
-                       window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
+                        if(!(/(localhost|test1|test)/gi.test(window.location.href))){
+                            window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
+                        }else{
+                            window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode+'&domain=https://test1.dyly.com'
+                        }
                     }
                 }else if(window.goProDetail){ // 安卓
                     window.goProDetail.sendermsg(projectCode);
                 }else{ // 其他
-                    window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
-                }
-            },
-            Pagejudgment(projectCode){ // 会员判断
-                this.axios.get('/vc/project/detail',{
-                    params:{
-                        projectId:projectCode
-                    }
-                }).then((res)=>{
-                    if(res.data.status == 1){
+                    if(!(/(localhost|test1|test)/gi.test(window.location.href))){
                         window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
+                    }else{
+                        window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode+'&domain=https://test1.dyly.com'
                     }
-                })
+                }
             },
             hasCollected(){ // 判断专辑是否被收藏
                 this.axios.post('/vc/albumFlow/hasCollected',{},{

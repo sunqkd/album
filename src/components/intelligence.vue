@@ -225,12 +225,20 @@
                     if(window.webkit.messageHandlers.goIntProDetail){
                         window.webkit.messageHandlers.goIntProDetail.postMessage({body: projectCode});
                     }else{
-                        window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
+                        if(!(/(localhost|test1|test)/gi.test(window.location.href))){
+                            window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
+                        }else{
+                            window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode+'&domain=https://test1.dyly.com'
+                        }
                     }
                 }else if(window.goIntProDetail){
                     window.goIntProDetail.sendermsg(projectCode);
                 }else{
-                    window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
+                    if(!(/(localhost|test1|test)/gi.test(window.location.href))){
+                            window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode
+                    }else{
+                        window.location.href = 'https://m.dyly.com/register/app_h5/project_share.html?id='+projectCode+'&domain=https://test1.dyly.com'
+                    }
                 }
             },
             async getAlbumLabel() { // 获取标签和城市
