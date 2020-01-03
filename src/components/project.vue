@@ -55,7 +55,7 @@
                         </div>
                         <div class="projectFiveLine" v-if="item.roadShowAlbumName">
                             <img src="./img/roadshow.png" alt="">
-                            <span>来自：{{item.roadShowAlbumName}}</span>
+                            <span>{{item.roadShowAlbumName=='路演视频'?item.roadShowAlbumName:'来自：'+item.roadShowAlbumName}}</span>
                         </div>
                     </div>
                 </li>
